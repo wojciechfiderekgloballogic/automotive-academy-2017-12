@@ -9,16 +9,15 @@ if "%~2"=="" goto NO_TARGET_BRACH
 set BASE_BRANCH=%1
 set TARGET_BRANCH=%2
 
+git checkout master
 
-git fetch
+git pull
 git fetch origin %BASE_BRANCH%:%BASE_BRANCH%
 git fetch origin %TARGET_BRANCH%:%TARGET_BRANCH%
 
-git checkout %TARGET_BRANCH%
 git checkout -b %TMP_BUILD_BRANCH%
-
 git merge %BASE_BRANCH%
-
+git merge %TARGET_BRANCH%
 
 make all
 
