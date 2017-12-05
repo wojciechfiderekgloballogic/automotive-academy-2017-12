@@ -3,13 +3,7 @@ CC = gcc
 
 src = \
 	$(wildcard test/*.c) \
-	$(wildcard app/wojfid/*.c) \
-	$(wildcard app/adagac/*.c) \
-	$(wildcard app/konswi/*.c) \
-	$(wildcard app/pawszy/*.c) \
-	$(wildcard app/piogaw/*.c) \
-	$(wildcard app/piozar/*.c) \
-	$(wildcard app/seblis/*.c) \
+	$(wildcard app/*/*.c) \
     
 obj = $(src:.c=.o)
 
