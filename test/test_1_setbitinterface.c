@@ -5,9 +5,9 @@
  * History log:
  * 2017.12.01   WojFid  Initial version - interface test
  */
-#include "test_setbit.h"
+#include "test_1_setbitinterface.h"
 
-void TEST_setBit(
+void TEST_1_setBitInterface(
     char* module_name,
     eErr_t (*setBit)(int bit, int* reg),
     eErr_t (*clearBit)(int bit, int* reg),
