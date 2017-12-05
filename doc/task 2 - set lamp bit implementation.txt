@@ -38,5 +38,11 @@ Remarks:
 
 ----------------------------------
 
+Important:
+To avoid conflicts this time modification of file tests.c will be different.
+In this specific file uncomment and commit only part that enables tests for you - do NOT put comments int history log etc.
+
+----------------------------------
+
 Branch name:
 NNNSSS_task_2_set_bit_implementation
