@@ -11,7 +11,7 @@
 #include "./tests.h"
 
 
-#define TEST__SET_BIT(MODULE_PREFIX) TEST_setBit( \
+#define TEST_1__SET_BIT_INTERFACE(MODULE_PREFIX) TEST_1_setBitInterface( \
     #MODULE_PREFIX,        \
     MODULE_PREFIX##_setBit,  \
     MODULE_PREFIX##_clearBit,  \
@@ -19,7 +19,7 @@
     )
 
 
-void TEST_setBit(
+void TEST_1_setBitInterface(
     char* module_name,
     eErr_t (*setBit)(int bit, int* reg),
     eErr_t (*clearBit)(int bit, int* reg),
