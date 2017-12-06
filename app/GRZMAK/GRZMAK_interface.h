@@ -3,7 +3,7 @@
 *
 *
 *History Log:
-* 2017.12.05 GRZMAK initial version + adding defines to task1
+* 2017.12.05 GRZMAK initial version
 *
 **/
 #ifndef GRZMAK_INTERFACE_H
