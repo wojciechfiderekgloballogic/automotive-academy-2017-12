@@ -33,8 +33,12 @@ printf "\n------ RUN -------\n"
 main
 
 
+printf "\n----- Pausing -> if any confilicts in section MERGE then you can check file before continue ------\n"
+pause
+
+
 printf "\n----- Clean ------\n"
-git checkout master
+git checkout -f master
 git branch -D %TMP_BUILD_BRANCH%
 
 
