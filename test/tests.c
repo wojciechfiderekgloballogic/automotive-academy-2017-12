@@ -18,10 +18,10 @@
 // #include "../app/rafand/RAFAND_interface.h"
 #include "../app/tomwes/TOMWES_interface.h"
 #include "../app/jarkur/JARKUR_interface.h"
-// #include "../app/adakor/ADAKOR_interface.h"
+#include "../app/adakor/ADAKOR_interface.h"
 #include "../app/tomwes/TOMWES_interface.h"
 // #include "../app/jarkur/JARKUR_interface.h"
-// #include "../app/adakor/ADAKOR_interface.h"
+#include "../app/adakor/ADAKOR_interface.h"
 #include "tests.h"
 #include "test_1_setbitinterface.h"
 #include "test_2_setlampbit.h"
@@ -42,8 +42,8 @@ int main() {
     //TEST_1__SET_BIT_INTERFACE(PAWAZI);
     //TEST_1__SET_BIT_INTERFACE(PIOCIE);
     //TEST_1__SET_BIT_INTERFACE(RAFAND);
-    TEST_1__SET_BIT_INTERFACE(JARKUR);
-    //TEST_1__SET_BIT_INTERFACE(ADAKOR);
+	TEST_1__SET_BIT_INTERFACE(JARKUR);
+    TEST_1__SET_BIT_INTERFACE(ADAKOR);
 
     //TEST_2__SET_LAMP_BIT(GRZMAK);
     //TEST_2__SET_LAMP_BIT(MARTOR);
