@@ -12,7 +12,7 @@
 #include "../app/wojfid/WOJFID_interface.h"
 #include "../app/grzmak/GRZMAK_interface.h"
 // #include "../app/martor/MARTOR_interface.h"
-// #include "../app/mickal/MICKAL_interface.h"
+ #include "../app/mickal/MICKAL_interface.h"
 // #include "../app/pawazi/PAWAZI_interface.h"
 // #include "../app/piocie/PIOCIE_interface.h"
 // #include "../app/rafand/RAFAND_interface.h"
@@ -38,7 +38,7 @@ int main() {
     TEST_1__SET_BIT_INTERFACE(TOMWES);
     TEST_1__SET_BIT_INTERFACE(GRZMAK);
     //TEST_1__SET_BIT_INTERFACE(MARTOR);
-    //TEST_1__SET_BIT_INTERFACE(MICKAL);
+    TEST_1__SET_BIT_INTERFACE(MICKAL);
     //TEST_1__SET_BIT_INTERFACE(PAWAZI);
     //TEST_1__SET_BIT_INTERFACE(PIOCIE);
     //TEST_1__SET_BIT_INTERFACE(RAFAND);
