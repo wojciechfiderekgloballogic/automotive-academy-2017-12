@@ -3,7 +3,8 @@
  *
  *
  * History log:
- * 2017.12.05   WojFid  Initial version - set lamp bit test
+ * 2017.12.06   PioCie  Edited in line16: eLampState_t* state
+ * 2017.12.06   WojFid  Initial version - set lamp bit test
  */
 #include "test_2_setlampbit.h"
 
@@ -12,7 +13,7 @@ void TEST_2__setLampBit(
     eErr_t (*setLampBit)    (eLamp_t bit, int* reg),
     eErr_t (*clearLampBit)  (eLamp_t bit, int* reg),
     eErr_t (*invertLampBit) (eLamp_t bit, int* reg),
-    eErr_t (*getLampState)  (eLamp_t bit, int reg, eLampState_t state)
+    eErr_t (*getLampState)  (eLamp_t bit, int reg, eLampState_t* state)
     ) {
         START_TEST;
         int v = 0;
