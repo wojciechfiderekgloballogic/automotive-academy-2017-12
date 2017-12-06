@@ -1,37 +1,25 @@
 /**
- * Responsible: Pawe≈Ç Aziukiewicz
- *
+ * Responsible: Pawe≥ Aziukiewicz
  *
  * History log:
- * 2017.12.05   WojFid  clearBit fix
- * 2017.12.01   WojFid  Initial version that fails tests
+ * 
  */
 
 #include <stdio.h>
 #include "PAWAZI_interface.h"
 
+/* Every public function in your module should start with   "MODULENAME_"   prefix */
+/* Every private function in your module should start with  "MODULENAME__"  prefix */
 
-eErr_t PAWAZI_setLampBit(eLamp_t bit, int* reg){
-	
-	*reg |= 1<<bit;
-	
+eErr_t PAWAZI_setBit(int bit, int* reg) {
+    return E_NOT_IMPLEMENTED;
 }
 
-eErr_t PAWAZI_clearLampBit(eLamp_t bit, int* reg){
-	
-	*reg &= ~(1<<bit);
-	
+eErr_t PAWAZI_clearBit(int bit, int* reg) {
+     return E_NOT_IMPLEMENTED;
 }
 
-eErr_t PAWAZI_invertLampBit(eLamp_t bit, int* reg){
-	
-	*reg ^= 1<<bit;
-	
-}
-
-eErr_t PAWAZI_getLampState(eLamp_t bit, int reg, eLampState_t* state){
-	
-	
-	
+eErr_t PAWAZI_invertBit(int bit, int* reg) {
+    return E_NOT_IMPLEMENTED;
 }
     
