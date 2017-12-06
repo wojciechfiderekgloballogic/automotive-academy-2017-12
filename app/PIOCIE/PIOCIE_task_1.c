@@ -5,8 +5,6 @@
  * History log:
  * 2017.12.05   PioCie  Initial version that complete tests
  */
-#ifndef PIOCIE_TASK_1_C
-#define PIOCIE_TASK_1_C
 
 #include <stdio.h>
 #include "PIOCIE_task_1.h"
@@ -25,5 +23,3 @@ eErr_t PIOCIE_clearBit(int bit, int* reg) {
 eErr_t PIOCIE_invertBit(int bit, int* reg) {
     return E_NOT_IMPLEMENTED;
 }
-
-#endif
