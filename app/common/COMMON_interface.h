@@ -3,6 +3,7 @@
  *
  *
  * History log:
+ * 2017.12.05   WojFid  eLampState_t introduced
  * 2017.12.01   WojFid  Initial version
  */
 #pragma once
@@ -38,7 +39,9 @@ typedef enum eErr {
  * Lamps
  */
 typedef enum eLamp {
-    LAMP_1 = 0,           /* Ok, no error */
+    LAMP_START = 0,
+    
+    LAMP_1 = LAMP_START,           /* Ok, no error */
     LAMP_2,    /* First  input argument invalid */
     LAMP_3,    /* Second -||- */    
     LAMP_4,    /* Functionality not yet implemented (so should not be used) */
@@ -65,6 +68,16 @@ typedef enum eLamp {
     LAMP_19,
     
     
-    LAMP_MAX  /* Number of lamps - this should be always the last one !! */
+    LAMP_COUNT  /* Number of lamps - this should be always the last one !! */
     
 } eLamp_t;
+
+
+/**
+ * Lamp state
+ */
+typedef enum eLampState {
+    LAMP_STATE_UNDEFINED,
+    LAMP_STATE_OFF,
+    LAMP_STATE_ON
+} eLampState_t;
