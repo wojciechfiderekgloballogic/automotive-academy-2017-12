@@ -10,9 +10,6 @@
 #include <stdio.h>
 #include "../app/common/COMMON_interface.h"
 #include "../app/wojfid/WOJFID_interface.h"
-<<<<<<< HEAD
-#include "../app/tomwes/TOMWES_interface.h"
-=======
 // #include "../app/grzmak/GRZMAK_interface.h"
 // #include "../app/martor/MARTOR_interface.h"
 // #include "../app/mickal/MICKAL_interface.h"
@@ -22,7 +19,6 @@
 #include "../app/tomwes/TOMWES_interface.h"
 // #include "../app/jarkur/JARKUR_interface.h"
 // #include "../app/adakor/ADAKOR_interface.h"
->>>>>>> master
 #include "tests.h"
 #include "test_1_setbitinterface.h"
 #include "test_2_setlampbit.h"
