@@ -3,14 +3,12 @@
  *
  *
  * History log:
- * 2017.12.06   RafAnd  Added another interface
  * 2017.12.05   WojFid  Task 2 tests introduced (set lamp bit)
  * 2017.12.05   TomWes  Added another interface
  * 2017.12.01   WojFid  Initial version
  */
 #include <stdio.h>
 #include "../app/common/COMMON_interface.h"
-#include "../app/rafand/RAFAND_interface.h"
 #include "../app/wojfid/WOJFID_interface.h"
 #include "../app/tomwes/TOMWES_interface.h"
 #include "tests.h"
@@ -32,7 +30,7 @@ int main() {
     //TEST_1__SET_BIT_INTERFACE(MICKAL);
     //TEST_1__SET_BIT_INTERFACE(PAWAZI);
     //TEST_1__SET_BIT_INTERFACE(PIOCIE);
-    TEST_1__SET_BIT_INTERFACE(RAFAND);
+    //TEST_1__SET_BIT_INTERFACE(RAFAND);
     //TEST_1__SET_BIT_INTERFACE(JARKUR);
     //TEST_1__SET_BIT_INTERFACE(ADAKOR);
 
