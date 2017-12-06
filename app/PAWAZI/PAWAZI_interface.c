@@ -10,7 +10,7 @@
 
 eErr_t PAWAZI_setLampBit(eLamp_t bit, int* reg){
 	
-	if(bit<0&&bit>sizeof(int)*8){
+	if(bit<LAMP_START && bit>LAMP_COUNT){
 		return E_INVALID_ARG_1;
 	}
 	
@@ -22,7 +22,7 @@ eErr_t PAWAZI_setLampBit(eLamp_t bit, int* reg){
 
 eErr_t PAWAZI_clearLampBit(eLamp_t bit, int* reg){
 	
-	if(bit<0&&sizeof(int)*8){
+	if(bit<LAMP_START && bit>LAMP_COUNT){
 		return E_INVALID_ARG_1;
 	}
 	
@@ -34,7 +34,7 @@ eErr_t PAWAZI_clearLampBit(eLamp_t bit, int* reg){
 
 eErr_t PAWAZI_invertLampBit(eLamp_t bit, int* reg){
 	
-	if(bit<0&&bit>sizeof(int)*8){
+	if(bit<LAMP_START && bit>LAMP_COUNT){
 		return E_INVALID_ARG_1;
 	}
 	
