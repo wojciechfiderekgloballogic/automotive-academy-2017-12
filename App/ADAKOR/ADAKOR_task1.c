@@ -6,8 +6,6 @@
  * 2017.12.05   ADAKOR  Initial version that fails tests
  */
 
-#ifndef ADAKOR_TASK1_C
-#define ADAKOR_TASK1_C
 #include "ADAKOR_task1.h"
 
 /* Every public function in your module should start with   "MODULENAME_"   prefix */
@@ -27,5 +25,3 @@ eErr_t ADAKOR_invertBit(int bit, int* reg) {
 	*reg ^= (1 << bit);
     return E_NOT_IMPLEMENTED;
 }
-
-#endif
