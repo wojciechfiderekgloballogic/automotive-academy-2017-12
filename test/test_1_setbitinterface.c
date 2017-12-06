@@ -13,7 +13,7 @@ void TEST_1_setBitInterface(
     eErr_t (*clearBit)(int bit, int* reg),
     eErr_t (*invertBit)(int bit, int* reg)
     ) {
-        START_TEST;
+        START_TEST(1);
         int v = 0;
         
         
