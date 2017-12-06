@@ -20,7 +20,7 @@ int main() {
     
     /* Add tests for your module when module interface ready */
     /* Below example should work in case if first task implemented due to requirements: */
-    TEST_1__SET_BIT_INTERFACE(WOJFID);
+    //TEST_1__SET_BIT_INTERFACE(WOJFID);
     TEST_1__SET_BIT_INTERFACE(PAWAZI);
     
 
