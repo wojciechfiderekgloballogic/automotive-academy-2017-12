@@ -23,7 +23,7 @@ Each function should modify specific `bit` of value pointed by `reg`.
 
 
 Function 4 behavior:
-- If specific `bit` is set to 1 in variable `reg` then value pointed by `state` should be set to `LAMP_STATE_ON`, else `state` should be set to `LAMP_STATE_OFF`.
+- If specific `bit` is set to 1 in variable `reg`then value pointed by `state` should be set to `LAMP_STATE_ON`, else `state` should be set to `LAMP_STATE_OFF`.
 
 
 Common behavior:
