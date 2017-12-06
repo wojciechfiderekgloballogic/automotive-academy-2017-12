@@ -3,6 +3,7 @@
  *
  *
  * History log:
+ * 2017.12.05   WojFid  clearBit fix
  * 2017.12.01   WojFid  Initial version that fails tests
  */
 
@@ -17,7 +18,7 @@ eErr_t WOJFID_setBit(int bit, int* reg) {
 }
 
 eErr_t WOJFID_clearBit(int bit, int* reg) {
-    return E_OK;
+    return E_NOT_IMPLEMENTED;
 }
 
 eErr_t WOJFID_invertBit(int bit, int* reg) {
