@@ -10,5 +10,6 @@
 
 // Every function that is exposed should be placed here
 #include "ADAKOR_task1.h"
+#include "ADAKOR_task2.h"
 
 #endif
