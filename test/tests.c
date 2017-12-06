@@ -19,6 +19,8 @@
 #include "../app/tomwes/TOMWES_interface.h"
 #include "../app/jarkur/JARKUR_interface.h"
 // #include "../app/adakor/ADAKOR_interface.h"
+#include "../app/tomwes/TOMWES_interface.h"
+
 #include "tests.h"
 #include "test_1_setbitinterface.h"
 #include "test_2_setlampbit.h"
@@ -49,7 +51,7 @@ int main() {
     //TEST_2__SET_LAMP_BIT(PIOCIE);
     //TEST_2__SET_LAMP_BIT(RAFAND);
     //TEST_2__SET_LAMP_BIT(TOMWES);
-    TEST_2__SET_LAMP_BIT(JARKUR);
+    //TEST_2__SET_LAMP_BIT(JARKUR);
     //TEST_2__SET_LAMP_BIT(ADAKOR);
     
 
