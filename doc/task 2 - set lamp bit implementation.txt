@@ -1,0 +1,48 @@
+Taks 2 - setLampBit implementation
+----------------------------------
+
+Implement 4 functions.
+Expose them as part of your module interface.
+Details below.
+
+----------------------------------
+
+Function signatures:
+1) eErr_t WOJFID_setLampBit(       eLamp_t bit, int* reg    )
+2) eErr_t WOJFID_clearLampBit(     eLamp_t bit, int* reg    )
+3) eErr_t WOJFID_invertLampBit(    eLamp_t bit, int* reg    )
+4) eErr_t WOJFID_getLampState(       eLamp_t bit, int reg, eLampState_t* state)
+
+----------------------------------
+
+Functions 1, 2 and 3 behavior:
+- First 3 functions should modify value of argument `reg` according to function name.
+Each function should modify specific `bit` of value pointed by `reg`.
+`bit` minimum value (LAMP_START) should point to LSB (least significant bit) of value pointed by `reg` pointer.
+`bit` maximum value (LAMP_END - 1) should point to LSB (least significant bit) of value pointed by `reg` pointer.
+
+
+Function 4 behavior:
+- If specific `bit` is set to 1 in variable `reg`then value pointed by `state` should be set to `LAMP_STATE_ON`, else `state` should be set to `LAMP_STATE_OFF`.
+
+
+Common behavior:
+- Argument `bit` is expected to be in range of eLamp_t type - if out of it's range function should return E_INVALID_ARG_1 code.
+Note that eLamp_t range is always between LAMP_START inclusively and LAMP_COUNT exclusively.
+
+- If input arguments are as expected and everything is correct then function should return E_OK code.
+----------------------------------
+
+Remarks:
+- `eLampState_t` and other non-standard types can be found in common module
+
+----------------------------------
+
+Important:
+To avoid conflicts this time modification of file tests.c will be different.
+In this specific file uncomment and commit only part that enables tests for you - do NOT put comments int history log etc.
+
+----------------------------------
+
+Branch name:
+NNNSSS_task_2_set_bit_implementation
