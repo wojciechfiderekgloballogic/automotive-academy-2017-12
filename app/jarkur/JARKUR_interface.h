@@ -7,9 +7,9 @@
 *
 *
 */
-#ifndef JARKUR_TASK1_H
-#def JARKUR_TASK1_H
+#ifndef JARKUR_INTERFACE_H
+#define JARKUR_INTERFACE_H
 
-#include "JARKUR_task1.h"
+#include "JARKUR_task1.h" 
 
-#endif
+#endif //JARKUR_INTERFACE_H
