@@ -15,7 +15,7 @@
 // #include "../app/mickal/MICKAL_interface.h"
 // #include "../app/pawazi/PAWAZI_interface.h"
 // #include "../app/piocie/PIOCIE_interface.h"
-// #include "../app/rafand/RAFAND_interface.h"
+#include "../app/rafand/RAFAND_interface.h"
 #include "../app/tomwes/TOMWES_interface.h"
 // #include "../app/jarkur/JARKUR_interface.h"
 // #include "../app/adakor/ADAKOR_interface.h"
@@ -38,7 +38,7 @@ int main() {
     //TEST_1__SET_BIT_INTERFACE(MICKAL);
     //TEST_1__SET_BIT_INTERFACE(PAWAZI);
     //TEST_1__SET_BIT_INTERFACE(PIOCIE);
-    //TEST_1__SET_BIT_INTERFACE(RAFAND);
+    TEST_1__SET_BIT_INTERFACE(RAFAND);
     //TEST_1__SET_BIT_INTERFACE(JARKUR);
     //TEST_1__SET_BIT_INTERFACE(ADAKOR);
 
