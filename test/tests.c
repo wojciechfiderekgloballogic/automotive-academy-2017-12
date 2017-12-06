@@ -3,7 +3,7 @@
  *
  *
  * History log:
- * 2017.12.05 ADAKOR added tests
+ * 2017.12.05   ADAKOR  Added tests
  * 2017.12.01   WojFid  Initial version
  */
 #include <stdio.h>
