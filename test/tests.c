@@ -20,7 +20,6 @@
 #include "../app/jarkur/JARKUR_interface.h"
 #include "../app/adakor/ADAKOR_interface.h"
 #include "../app/tomwes/TOMWES_interface.h"
-// #include "../app/jarkur/JARKUR_interface.h"
 #include "../app/adakor/ADAKOR_interface.h"
 #include "tests.h"
 #include "test_1_setbitinterface.h"
