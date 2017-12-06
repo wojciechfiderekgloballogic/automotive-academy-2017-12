@@ -3,10 +3,11 @@
  *
  *
  * History log:
+ *  06.12.2017 initial version
  */
 
 #include <stdio.h>
-#include "PAWAZI_interface.h"
+#include "PAWAZI_task_2.h"
 
 eErr_t PAWAZI_setLampBit(eLamp_t bit, int* reg){
 	
@@ -17,6 +18,7 @@ eErr_t PAWAZI_setLampBit(eLamp_t bit, int* reg){
 	*reg |= 1<<bit;
 	
 	return E_OK;
+	
 	
 }
 
