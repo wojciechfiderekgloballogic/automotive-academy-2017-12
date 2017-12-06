@@ -3,6 +3,7 @@
  *
  *
  * History log:
+ * 2017.12.05   WojFid  New line fix
  * 2017.12.01   WojFid  Initial version
  */
 #include <stdio.h>
@@ -26,6 +27,6 @@
 #define STOP_TEST                       \
     if(ok == 1) {                       \
         OUT_GREEN();                    \
-        printf("%s: ok", module_name);  \
+        printf("%s: ok\n", module_name);\
         OUT_WHITE();                    \
     }
