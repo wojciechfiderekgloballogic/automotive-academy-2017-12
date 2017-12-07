@@ -55,7 +55,7 @@ eErr_t JARKUR_getLampState( eLamp_t bit, int reg, eLampState_t* state) {
 	}
 	int mask = 1;
 	mask = mask << bit;
-	if (reg & mask ) {
+	if (reg & mask) {
 		*state = LAMP_STATE_ON;
 	} else {
 		*state = LAMP_STATE_OFF;
