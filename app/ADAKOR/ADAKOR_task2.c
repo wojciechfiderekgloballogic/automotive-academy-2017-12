@@ -29,6 +29,7 @@ eErr_t ADAKOR_clearLampBit(eLamp_t bit, int* reg)
 	if (bit >= LAMP_START && bit <= LAMP_COUNT)
 	{
 		*reg &= ~(1 << bit);
+		return E_OK;
 	}
 	else
 	{
@@ -41,6 +42,7 @@ eErr_t ADAKOR_invertLampBit(eLamp_t bit, int* reg)
 	if (bit >= LAMP_START && bit <= LAMP_COUNT)
 	{
 		*reg ^= (1 << bit);
+		return E_OK;
 	}
 	else
 	{
@@ -50,5 +52,20 @@ eErr_t ADAKOR_invertLampBit(eLamp_t bit, int* reg)
 
 eErr_t ADAKOR_getLampState(eLamp_t bit, int reg, eLampState_t* state)
 {
-	
+	if (bit >= LAMP_START && bit < LAMP_COUNT)
+	{
+		if ((reg & (1 << bit)) != 0)
+		{
+			*state = LAMP_STATE_ON;
+		}
+		else
+		{
+			*state = LAMP_STATE_OFF;
+		}
+		return E_OK;
+	}
+	else
+	{
+		return E_INVALID_ARG_1;
+	}
 }

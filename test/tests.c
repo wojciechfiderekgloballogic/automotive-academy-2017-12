@@ -52,7 +52,7 @@ int main() {
     //TEST_2__SET_LAMP_BIT(RAFAND);
     //TEST_2__SET_LAMP_BIT(TOMWES);
     //TEST_2__SET_LAMP_BIT(JARKUR);
-    //TEST_2__SET_LAMP_BIT(ADAKOR);
+    TEST_2__SET_LAMP_BIT(ADAKOR);
     
 
     OUT_WHITE();
