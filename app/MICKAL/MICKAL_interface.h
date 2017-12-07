@@ -12,6 +12,7 @@
 
 #define MICKAL_INTERFACE_H
 #include "MICKAL_task1.h"
+#include "MICKAL_task2.h"
 
 
 
