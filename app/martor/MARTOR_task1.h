@@ -5,7 +5,8 @@
  * History log:
  * 2017.12.06	MarTor	Initial Edit
  */
-#pragma once
+#ifndef MARTOR_TASK1_H
+#define MARTOR_TASK1_H
 
 #include "../common/COMMON_interface.h"
 
@@ -17,3 +18,4 @@ eErr_t MARTOR_clearBit(int bit, int* reg);
 
 eErr_t MARTOR_invertBit(int bit, int* reg);
 
+#endif
