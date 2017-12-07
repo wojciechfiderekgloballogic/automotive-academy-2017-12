@@ -9,6 +9,8 @@
 #ifndef __PAWAZI_INTERFACE__
 #define __PAWAZI_INTERFACE__
 
+#include "PAWAZI_task_1.h"
 #include "PAWAZI_task_2.h"
+
 
 #endif
