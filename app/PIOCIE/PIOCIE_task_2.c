@@ -12,18 +12,6 @@
 /* Every public function in your module should start with   "MODULENAME_"   prefix */
 /* Every private function in your module should start with  "MODULENAME__"  prefix */
 
-eErr_t PIOCIE_setBit(int bit, int* reg) {
-    return E_NOT_IMPLEMENTED;
-}
-
-eErr_t PIOCIE_clearBit(int bit, int* reg) {
-    return E_NOT_IMPLEMENTED;
-}
-
-eErr_t PIOCIE_invertBit(int bit, int* reg) {
-    return E_NOT_IMPLEMENTED;
-}
-
 eErr_t PIOCIE_setLampBit( eLamp_t bit, int* reg)
 {
 	if(bit<LAMP_START||bit>(sizeof(*reg)-1))
