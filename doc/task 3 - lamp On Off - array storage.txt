@@ -1,0 +1,41 @@
+Taks 3 - lamp On Off - implementation with internal storage
+----------------------------------
+
+Implement 3 functions.
+Expose them as part of your module interface.
+Details below.
+
+----------------------------------
+
+Function signatures:
+1) eErr_t WOJFID_lampOn(eLamp_t eLamp)
+2) eErr_t WOJFID_lampOff(eLamp_t eLamp)
+3) eErr_t WOJFID_getLamp(eLamp_t eLamp, eLampState_t* eState)
+
+----------------------------------
+
+Functions 1, 2 and 3 behavior:
+- Your module should store lamps state (is it ON or OFF) using as low memory as possible.
+As internal storage please use array of type uint8_t.
+For example if you will use variable of type uint8_t you will be able to store only 8 lamps state
+Whe have more than 8 lamps (check eLamp_t) so as internal storage you should use array of uint8_t.
+It's size should be determined at compilation time using value LAMP_COUNT, for example:
+    a) if  LAMP_COUNT <= 8                        then  starage will take 1 byte (uint8_t storage[1])
+    b) if  LAMP_COUNT > 8  AND  LAMP_COUNT <= 16  then  storage will take 2 bytes (uint8_t storage[2])
+*Hint: to determine size of storage at compilation time (without runtime 'if') you can use 'ternary operator' inside '[]' (search the internet for ternary operator)
+*Hint: remember that your code should still work even if value LAMP_COUNT will increase in future
+    
+- Function 3 should always set value pointed by eState argument to LAMP_STATE_ON or LAMP_STATE_OFF (note that there is also state LAMP_STATE_UNDEFINED in type eLampState_t)
+
+- Return value should behave as in task 2 (eErr_t)
+
+----------------------------------
+
+Important:
+- Merge latest master to your branch (ensure that project builds)
+- Use hungarian notation (http://web.mst.edu/~cpp/common/hungarian.html). Search the internet for more examples. This is mandatory for task acceptance
+
+----------------------------------
+
+Branch name:
+NNNSSS_task_2_set_bit_implementation
