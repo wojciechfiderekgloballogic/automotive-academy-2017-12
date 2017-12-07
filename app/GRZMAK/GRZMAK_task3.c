@@ -48,7 +48,7 @@ eErr_t GRZMAK_getLamp(eLamp_t eLamp,eLampState_t* eState)
 	eErr_t retval;
 	if(eLamp >= LAMP_START < LAMP_COUNT)
 	{
-		if(u8LampArr[eLamp/8] &= 1<<eLamp)
+		if(u8LampArr[eLamp/8] & 1<<eLamp)
 		{
 			*eState = LAMP_STATE_ON;
 			retval = E_OK;
