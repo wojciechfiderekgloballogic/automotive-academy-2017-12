@@ -14,56 +14,68 @@
 
 eErr_t GRZMAK_setLampBit( eLamp_t bit, int* reg)
 {
-	if(bit < LAMP_START || bit >= LAMP_COUNT)
+	eErr_t retval = E_OK;
+	
+	if(bit < LAMP_START || bit > LAMP_COUNT)
 	{
-		return E_INVALID_ARG_1;
+		retval = E_INVALID_ARG_1;
 	}
 	if(reg == NULL)
 	{
-		return E_INVALID_ARG_2;
+		retval = E_INVALID_ARG_2;
 	}
-	
-	*reg = (1 << bit) | *reg;	
-	return E_OK;
+	else
+	{
+		*reg = (1 << bit) | *reg;
+	}
+	return retval;
 	
 }
 eErr_t GRZMAK_clearLampBit( eLamp_t bit, int* reg)
 {
-	if(bit < LAMP_START || bit >= LAMP_COUNT)
+	eErr_t retval = E_OK;
+	if(bit < LAMP_START || bit > LAMP_COUNT)
 	{
-		return E_INVALID_ARG_1;
+		retval = E_INVALID_ARG_1;
 	}
 	if(reg == NULL)
 	{
-		return E_INVALID_ARG_2;
-	}
-	
-	*reg = ~(1<<bit) & *reg;
-	return E_OK;
-	
+		retval = E_INVALID_ARG_2;
+	}		
+	else
+	{
+		*reg = ~(1<<bit) & *reg;
+	}	
+	return retval;
 }
 
 eErr_t GRZMAK_invertLampBit( eLamp_t bit, int* reg)
 {
-	if(bit < LAMP_START || bit >= LAMP_COUNT)
+	eErr_t retval = E_OK;
+	if(bit < LAMP_START || bit > LAMP_COUNT)
 	{
-		return E_INVALID_ARG_1;
+		retval = E_INVALID_ARG_1;
 	}
 	if(reg == NULL)
 	{
-		return E_INVALID_ARG_2;
+		retval = E_INVALID_ARG_2;
 	}
-	
-	*reg = (1 << bit) ^ *reg;
-	return E_OK;
+	else
+	{
+		*reg = (1 << bit) ^ *reg;
+	}
+	return retval;
 	
 }
 
 eErr_t GRZMAK_getLampState(eLamp_t bit, int reg, eLampState_t* state)
 {
-	if(bit < LAMP_START || bit >= LAMP_COUNT)
+	
+	eErr_t retval = E_OK;
+	
+	if(bit < LAMP_START || bit > LAMP_COUNT)
 	{
-		return E_INVALID_ARG_1;
+		retval = E_INVALID_ARG_1;
 	}
 
 	
@@ -71,11 +83,11 @@ eErr_t GRZMAK_getLampState(eLamp_t bit, int reg, eLampState_t* state)
 	if(reg & (1<<bit))
 	{
 		*state = LAMP_STATE_ON;
-		return E_OK;
 	}
 	else
 	{
 		*state = LAMP_STATE_OFF;
-		return E_OK;
 	}
+	
+	return retval;
 }
