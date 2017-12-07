@@ -19,7 +19,9 @@ eErr_t PAWAZI_setLampBit(eLamp_t bit, int* reg){
 		res = 1;
 	}else if(reg == NULL){
 		res = 2;
-	}else{
+	}
+	
+	if(!res){
 		*reg |= 1<<bit;
 	}
 	
@@ -36,7 +38,9 @@ eErr_t PAWAZI_clearLampBit(eLamp_t bit, int* reg){
 		res = 1;
 	}else if(reg == NULL){
 		res = 2;
-	}else{
+	}
+	
+	if(!res){
 		*reg &= ~(1<<bit);
 	}
 	
@@ -53,7 +57,9 @@ eErr_t PAWAZI_invertLampBit(eLamp_t bit, int* reg){
 		res = 1;
 	}else if(reg == NULL){
 		res = 2;
-	}else{
+	}
+	
+	if(!res){
 		*reg ^= 1<<bit;
 	}
 	
@@ -70,12 +76,13 @@ eErr_t PAWAZI_getLampState(eLamp_t bit, int reg, eLampState_t* state){
 	}else if(state == NULL){
 		res = 2;
 	}
-		
-	if(((reg >> bit) & 0x01)){
-		*state = LAMP_STATE_ON;
-	}else *state = LAMP_STATE_OFF;	
 
-		
+	if(!res){
+		if(((reg >> bit) & 0x01)){
+			*state = LAMP_STATE_ON;
+		}else *state = LAMP_STATE_OFF;	
+	}
+
 	return resErr[res];
 }
     
