@@ -9,9 +9,9 @@
 
 
 
-#ifndef "GRZMAK_TASK3_H"
+#ifndef GRZMAK_TASK3_H
 
-#define "GRZMAK_TASK3_H"
+#define GRZMAK_TASK3_H
 #include "../common/COMMON_interface.h"
 
 eErr_t GRZMAK_lampOn(eLamp_t eLamp);

@@ -58,6 +58,7 @@ eErr_t GRZMAK_getLamp(eLamp_t eLamp,eLampState_t* eState)
 			*eState = LAMP_STATE_OFF;
 			retval = E_OK;
 		}
+	}
 	else
 	{
 			retval = E_INVALID_ARG_1;
