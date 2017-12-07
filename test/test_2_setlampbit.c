@@ -50,7 +50,7 @@ int isEveryBitSet(int reg) {
 
     return result;
 }
-
+ 
 void TEST_2__setLampBit(
     char* module_name,
     eErr_t (*setLampBit)    (eLamp_t bit, int* reg),
