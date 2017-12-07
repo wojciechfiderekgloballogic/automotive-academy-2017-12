@@ -13,21 +13,23 @@
 
 
 #define ASSERT(actual, expected)                                                    \
-    ok &= _ASSERT(actual, expected);                                                \
-    if( ! _ASSERT(actual, expected)){                                               \
+    ok = _ASSERT(actual, expected);                                                	\
+    if(!ok){                                               							\
         OUT_RED();                                                                  \
         printf("%s: fail (file:%s,  line:%d\n", module_name, __FILE__, __LINE__);   \
-        OUT_WHITE();                                                                \
+        OUT_WHITE();																\
+		allok = 0;                                                                	\
     }
 
 
 #define START_TEST(TEST_NO) \
     int ok = 1; \
-    int test_number = TEST_NO;
+	int allok = 1; \
+    int test_number = TEST_NO; \
     
 
 #define STOP_TEST                       \
-    if(ok == 1) {                       \
+    if(allok == 1) {                       \
         OUT_GREEN();                    \
         printf("%s - test %d: ok\n", module_name, test_number);\
         OUT_WHITE();                    \
