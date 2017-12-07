@@ -13,8 +13,9 @@
 
 
 #define ASSERT(actual, expected)                                                    \
-    ok &= _ASSERT(actual, expected);                                                \
-    if( ! _ASSERT(actual, expected)){                                               \
+    test_ok= _ASSERT(actual, expected);                                                \
+    ok &=test_ok;            \
+    if( ! test_ok){                                               \
         OUT_RED();                                                                  \
         printf("%s: fail (file:%s,  line:%d\n", module_name, __FILE__, __LINE__);   \
         OUT_WHITE();                                                                \
@@ -23,6 +24,7 @@
 
 #define START_TEST(TEST_NO) \
     int ok = 1; \
+	int test_ok = 1;\
     int test_number = TEST_NO;
     
 

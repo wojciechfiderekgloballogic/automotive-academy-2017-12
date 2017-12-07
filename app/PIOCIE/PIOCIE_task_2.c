@@ -14,30 +14,46 @@
 
 eErr_t PIOCIE_setLampBit( eLamp_t bit, int* reg)
 {
-	if(bit<LAMP_START||bit>(sizeof(*reg)-1))
+	if(bit<LAMP_START||bit>=LAMP_COUNT)
+	{
 		return E_INVALID_ARG_1;
+	}
+	if(NULL==reg)
+	{
+		return E_INVALID_ARG_2;
+	}
 	*reg|=(0x01<<bit);
 	return E_OK;
 };
 eErr_t PIOCIE_clearLampBit(     eLamp_t bit, int* reg    )
 {
-	if(bit<LAMP_START||bit>(sizeof(*reg)-1))
+	if(bit<LAMP_START||bit>=LAMP_COUNT)
 		return E_INVALID_ARG_1;
+	if(NULL==reg)
+		return E_INVALID_ARG_2;
+	
 	*reg&=~(0x01<<bit);
 	return E_OK;
 };
 eErr_t PIOCIE_invertLampBit(    eLamp_t bit, int* reg    )
 {
-	if(bit<LAMP_START||bit>(sizeof(*reg)-1))
+	if(bit<LAMP_START||bit>=LAMP_COUNT)
 		return E_INVALID_ARG_1;
+	if(NULL==reg)
+		return E_INVALID_ARG_2;
+	
 	*reg^=(0x01<<bit);
+	
 	return E_OK;
 };
 eErr_t PIOCIE_getLampState(       eLamp_t bit, int reg, eLampState_t* state)
 {
-	if(bit<LAMP_START||bit>(sizeof(reg)-1))
+	if(bit<LAMP_START||bit>=LAMP_COUNT)
 		return E_INVALID_ARG_1;
-	if((reg)&(0x01<<bit))
+	if(NULL==state)
+		return E_INVALID_ARG_2;
+	
+	if(((reg)&(0x01<<bit)))
 		*state=LAMP_STATE_ON;
 	else
 		*state=LAMP_STATE_OFF;
