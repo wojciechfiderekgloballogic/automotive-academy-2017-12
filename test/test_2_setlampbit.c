@@ -16,7 +16,7 @@ int isTheOnlyBitSet(eLamp_t bit, int reg) {
         if( i == bit ) {
             continue;
         }
-        if( (reg >> bit) & 1 ) {
+        if( (reg >> i) & 1 ) {
             result = 0;
         }
     }
@@ -69,6 +69,8 @@ void TEST_2__setLampBit(
         
         
         for(eBit=LAMP_START; eBit<LAMP_COUNT; eBit++) {
+			
+			
             // Set
             ASSERT( setLampBit(eBit, &r),       E_OK);
             ASSERT( getLampState(eBit, r, &val),E_OK);
@@ -102,7 +104,7 @@ void TEST_2__setLampBit(
         
         // Clear every lamp
         for(eBit=LAMP_START; eBit<LAMP_COUNT; eBit++) {
-            ASSERT( setLampBit(eBit, &r),       E_OK);
+            ASSERT( clearLampBit(eBit, &r),     E_OK);
         }
         ASSERT( isEveryBitClear(r), 1 );
         
