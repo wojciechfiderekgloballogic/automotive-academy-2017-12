@@ -1,5 +1,5 @@
 /**
- * Responsible: Pawel Aziukiewicz
+ * Responsible: Paw Azi
  *
  *
  * History log:
