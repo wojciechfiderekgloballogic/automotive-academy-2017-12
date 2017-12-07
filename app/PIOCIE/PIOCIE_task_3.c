@@ -7,12 +7,12 @@
  */
 
 #include <stdio.h>
-#include "PIOCIE_task_2.h"
+#include "PIOCIE_task_3.h"
 #define uint8_t unsigned char
 /* Every public function in your module should start with   "MODULENAME_"   prefix */
 /* Every private function in your module should start with  "MODULENAME__"  prefix */
 
-uint8_t g_u8rgStorage[LAMP_COUNT%8?LAMP_COUNT/8+1:LAMP_COUNT/8];
+static uint8_t g_u8rgStorage[LAMP_COUNT%8?LAMP_COUNT/8+1:LAMP_COUNT/8];
 
 eErr_t PIOCIE_lampOn(eLamp_t eLamp)
 {
@@ -28,6 +28,7 @@ eErr_t PIOCIE_lampOn(eLamp_t eLamp)
 	else
 	{
 		g_u8rgStorage[eLamp/8]|=(0x01<<(eLamp%8));
+		printf("\nset ON %d:%d",eLamp,g_u8rgStorage[eLamp/8]);
 		result=E_OK;
 	}
 	return result;
@@ -47,6 +48,7 @@ eErr_t PIOCIE_lampOff(eLamp_t eLamp)
 	else
 	{
 		g_u8rgStorage[eLamp/8]&=~(0x01<<(eLamp%8));
+		printf("\nset OFF %d:%d",eLamp,g_u8rgStorage[eLamp/8]);
 		result=E_OK;
 	}
 	return result;
@@ -67,12 +69,14 @@ eErr_t PIOCIE_getLamp(eLamp_t eLamp, eLampState_t* eState)
 	}
 	else
 	{
-		if(((g_u8rgStorage[eLamp/8])&(0x01<<eLamp)))
+		if(((g_u8rgStorage[eLamp/8])&(0x01<<(eLamp%8))))
 		{
+			printf("\n2:");
 			*eState=LAMP_STATE_ON;
 		}
 		else
 		{
+			printf("\n1:");
 			*eState=LAMP_STATE_OFF;
 		}
 		result=E_OK;
