@@ -52,5 +52,6 @@ eErr_t PAWAZI_getLampState(eLamp_t bit, int reg, eLampState_t* state){
 		*state = LAMP_STATE_ON;
 	}else *state = LAMP_STATE_OFF;	
 		
+	return E_OK;
 }
     
