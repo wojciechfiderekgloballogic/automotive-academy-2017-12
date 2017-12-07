@@ -9,72 +9,71 @@
 #include <stdio.h>
 #include "PAWAZI_task_2.h"
 
-static const enum eErr resErr[] = { E_OK, E_INVALID_ARG_1, E_INVALID_ARG_2, E_NOT_IMPLEMENTED, E_MALLOC };
 
 eErr_t PAWAZI_setLampBit(eLamp_t bit, int* reg){
 
-	int res = 0;
+	eErr_t res = E_OK;
 	
 	if(bit<LAMP_START || bit>=LAMP_COUNT){
-		res = 1;
+		res = E_INVALID_ARG_1;
 	}else if(reg == NULL){
-		res = 2;
+		res = E_INVALID_ARG_2;
 	}
 	
 	if(!res){
 		*reg |= 1<<bit;
 	}
 	
-	return resErr[res];
+	return res;
 	
 	
 }
 
 eErr_t PAWAZI_clearLampBit(eLamp_t bit, int* reg){
 	
-	int res = 0;
+	eErr_t res = E_OK;
 	
 	if(bit<LAMP_START || bit>=LAMP_COUNT){
-		res = 1;
+		res = E_INVALID_ARG_1;
 	}else if(reg == NULL){
-		res = 2;
+		res = E_INVALID_ARG_2;
 	}
 	
 	if(!res){
 		*reg &= ~(1<<bit);
 	}
 	
-	return resErr[res];
+	return res;
 	
 }
 
 eErr_t PAWAZI_invertLampBit(eLamp_t bit, int* reg){
 	
 	
-	int res = 0;
+	eErr_t res = E_OK;
 	
 	if(bit<LAMP_START || bit>=LAMP_COUNT){
-		res = 1;
+		res = E_INVALID_ARG_1;
 	}else if(reg == NULL){
-		res = 2;
+		res = E_INVALID_ARG_2;
 	}
 	
 	if(!res){
 		*reg ^= 1<<bit;
 	}
 	
-	return resErr[res];
+	return res;
 	
 }
 
 eErr_t PAWAZI_getLampState(eLamp_t bit, int reg, eLampState_t* state){
 	
-	int res = 0;
+	eErr_t res = E_OK;
 	
 	if(bit<LAMP_START || bit>=LAMP_COUNT){
-		res = 1;
+		res = E_INVALID_ARG_1;
 	}else if(state == NULL){
-		res = 2;
+		res = E_INVALID_ARG_2;
 	}
 
 	if(!res){
@@ -83,6 +82,6 @@ eErr_t PAWAZI_getLampState(eLamp_t bit, int reg, eLampState_t* state){
 		}else *state = LAMP_STATE_OFF;	
 	}
 
-	return resErr[res];
+	return res;
 }
     
