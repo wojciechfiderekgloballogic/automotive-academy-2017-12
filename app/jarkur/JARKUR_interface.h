@@ -11,5 +11,5 @@
 #define JARKUR_INTERFACE_H
 
 #include "JARKUR_task1.h" 
-
+#include "JARKUR_task2.h"
 #endif //JARKUR_INTERFACE_H
