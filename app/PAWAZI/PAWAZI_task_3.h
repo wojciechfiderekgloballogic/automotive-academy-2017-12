@@ -10,9 +10,9 @@
 #include <stdint.h>
 #include "../common/COMMON_interface.h"
 
-eErr_t WOJFID_lampOn(eLamp_t eLamp);
-eErr_t WOJFID_lampOff(eLamp_t eLamp);
-eErr_t WOJFID_getLamp(eLamp_t eLamp, eLampState_t* eState);
+eErr_t PAWAZI_lampOn(eLamp_t eLamp);
+eErr_t PAWAZI_lampOff(eLamp_t eLamp);
+eErr_t PAWAZI_getLamp(eLamp_t eLamp, eLampState_t* eState);
 
 #endif
 
