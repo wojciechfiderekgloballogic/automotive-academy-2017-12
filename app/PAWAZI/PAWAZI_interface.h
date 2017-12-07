@@ -1,20 +1,19 @@
 /**
- * Responsible: Pawe³ Aziukiewicz
+ * Responsible: Pawel Aziukiewicz
  *
  *
  * History log:
- * 2017.12.01   Pawe³ Aziukiewicz  Initial version
+ * 2017.12.06 changed files structure
  */
+
 #ifndef __PAWAZI_INTERFACE__
 #define __PAWAZI_INTERFACE__
 
-#include "../common/COMMON_interface.h"
+#include <stdint.h>
 
-eErr_t PAWAZI_setBit(int bit, int* reg);
+#include "PAWAZI_task_1.h"
+#include "PAWAZI_task_2.h"
+#include "PAWAZI_task_3.h"
 
-eErr_t PAWAZI_clearBit(int bit, int* reg);
-
-eErr_t PAWAZI_invertBit(int bit, int* reg);
 
 #endif
-
