@@ -21,12 +21,14 @@
     }
 
 
-#define START_TEST int ok = 1
+#define START_TEST(TEST_NO) \
+    int ok = 1; \
+    int test_number = TEST_NO;
     
 
 #define STOP_TEST                       \
     if(ok == 1) {                       \
         OUT_GREEN();                    \
-        printf("%s: ok\n", module_name);\
+        printf("%s - test %d: ok\n", module_name, test_number);\
         OUT_WHITE();                    \
     }

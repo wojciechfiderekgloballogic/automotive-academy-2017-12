@@ -26,5 +26,5 @@ void TEST_2__setLampBit(
     eErr_t (*setLampBit)    (eLamp_t bit, int* reg),
     eErr_t (*clearLampBit)  (eLamp_t bit, int* reg),
     eErr_t (*invertLampBit) (eLamp_t bit, int* reg),
-    eErr_t (*getLampState)  (eLamp_t bit, int reg, eLampState_t state)
+    eErr_t (*getLampState)  (eLamp_t bit, int reg, eLampState_t* state)
     );
