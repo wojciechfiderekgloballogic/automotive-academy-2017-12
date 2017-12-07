@@ -11,42 +11,50 @@
  
  
  eErr_t MICKAL_setLampBit(eLamp_t bit, int* reg){
-	 if(bit < LAMP_START || bit > LAMP_COUNT)
-		 return E_INVALID_ARG_1;
-	 if(reg==NULL)
-		 return E_INVALID_ARG_2;
 	 
-    *reg |= 1<<bit;
-	return E_OK;
+	 eErr_t t = E_OK;
+	 
+	 if(bit < LAMP_START || bit > LAMP_COUNT)
+		 t =  E_INVALID_ARG_1;
+	 if(reg==NULL)
+		 t = E_INVALID_ARG_2;
+	 else
+		*reg |= 1<<bit;
+	
+	return t;
 }
 
 eErr_t MICKAL_clearLampBit(eLamp_t bit, int* reg){
-	if(bit < LAMP_START || bit > LAMP_COUNT)
-		 return E_INVALID_ARG_1;
-	if(reg==NULL)
-		 return E_INVALID_ARG_2;
+	 eErr_t t = E_OK;
 	 
-    *reg &=~(1<<bit);
+	if(bit < LAMP_START || bit > LAMP_COUNT)
+		 t = E_INVALID_ARG_1;
+	if(reg==NULL)
+		 t = E_INVALID_ARG_2;
+	 else
+		*reg &=~(1<<bit);
 	
-	return E_OK;
+	return t;
 }
 
 eErr_t MICKAL_invertLampBit(eLamp_t bit, int* reg){
+	 eErr_t t = E_OK;
 	if(bit < LAMP_START || bit > LAMP_COUNT)
-		 return E_INVALID_ARG_1;
-	if(reg==NULL)
-		 return E_INVALID_ARG_2;
-
-	 
-    *reg ^=1<<bit;
+		 t = E_INVALID_ARG_1;
+	if(reg == NULL)
+		 t = E_INVALID_ARG_2;
+	else	 
+		*reg ^=1<<bit;
 	
-	return E_OK;
+	return t;
 		
 }
 
 eErr_t MICKAL_getLampState(eLamp_t bit, int reg, eLampState_t* state){
+	 eErr_t t = E_OK;
+	 
 	if(bit < LAMP_START || bit > LAMP_COUNT)
-		 return E_INVALID_ARG_1;
+		 t = E_INVALID_ARG_1;
 	
 	
 	
@@ -58,6 +66,7 @@ eErr_t MICKAL_getLampState(eLamp_t bit, int reg, eLampState_t* state){
 		*state = LAMP_STATE_OFF;
 	}
 	
-	return E_OK;
+	return t;
 }
+
 
