@@ -13,40 +13,56 @@
 /* Every private function in your module should start with  "MODULENAME__"  prefix */
 
 eErr_t RAFAND_setLampBit(eLamp_t bit, int* reg) {
-	if(bit >= LAMP_COUNT || bit < 0) {
-		return E_INVALID_ARG_1;
+	eErr_t ret = E_OK;
+	if(NULL == reg) {
+		ret = E_INVALID_ARG_2;
 	}
-	*reg |= 1<<bit;
-    return E_OK;
+	else if(bit >= LAMP_COUNT || bit < 0) {
+		ret = E_INVALID_ARG_1;
+	}
+	else
+		*reg |= 1<<bit;
+    return ret;
 }
 
 eErr_t RAFAND_clearLampBit(eLamp_t bit, int* reg) {
-	if(bit >= LAMP_COUNT || bit < 0) {
-		return E_INVALID_ARG_1;
+	eErr_t ret = E_OK;
+	if(NULL == reg) {
+		ret = E_INVALID_ARG_2;
 	}
-	*reg &= ~(1<<bit);
-    return E_OK;
+	else if(bit >= LAMP_COUNT || bit < 0) {
+		ret = E_INVALID_ARG_1;
+	}
+	else
+		*reg &= ~(1<<bit);
+    return ret;
 }
 
 eErr_t RAFAND_invertLampBit(eLamp_t bit, int* reg) {
-	if(bit >= LAMP_COUNT || bit < 0) {
-		return E_INVALID_ARG_1;
+	eErr_t ret = E_OK;
+	if(NULL == reg) {
+		ret = E_INVALID_ARG_2;
 	}
-	*reg ^= 1<<bit;
-    return E_OK;
+	else if(bit >= LAMP_COUNT || bit < 0) {
+		ret = E_INVALID_ARG_1;
+	}
+	else
+		*reg ^= 1<<bit;
+    return ret;
 }
 
 eErr_t RAFAND_getLampState(eLamp_t bit, int reg, eLampState_t* state) {
+	eErr_t ret = E_OK;
 	if(bit >= LAMP_COUNT || bit < 0) {
-		return E_INVALID_ARG_1;
+		ret = E_INVALID_ARG_1;
 	}
-	if(reg & 1<<bit) {
+	else if(reg & 1<<bit) {
 		*state = LAMP_STATE_ON;
 	}
 	else {
 		*state = LAMP_STATE_OFF;
 	}
-    return E_OK;
+    return ret;
 }
 
     
