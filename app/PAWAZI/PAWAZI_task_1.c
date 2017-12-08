@@ -6,7 +6,7 @@
  */
 
 #include <stdio.h>
-#include "PAWAZI_interface.h"
+#include "PAWAZI_task_1.h"
 
 /* Every public function in your module should start with   "MODULENAME_"   prefix */
 /* Every private function in your module should start with  "MODULENAME__"  prefix */
