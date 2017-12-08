@@ -3,6 +3,7 @@
  *
  *
  * History log:
+ * 2017.12.08   PioCie  Added test 3
  * 2017.12.05   WojFid  Task 2 tests introduced (set lamp bit)
  * 2017.12.05   TomWes  Added another interface
  * 2017.12.01   WojFid  Initial version
@@ -24,6 +25,7 @@
 #include "tests.h"
 #include "test_1_setbitinterface.h"
 #include "test_2_setlampbit.h"
+#include "test_3_lampon.h"
 
 
 int main() {
@@ -54,7 +56,16 @@ int main() {
     //TEST_2__SET_LAMP_BIT(JARKUR);
     //TEST_2__SET_LAMP_BIT(ADAKOR);
     
-
+	//TEST_3__LAMP_ON(GRZMAK);
+	//TEST_3__LAMP_ON(MARTOR);
+	//TEST_3__LAMP_ON(MICKAL);
+	//TEST_3__LAMP_ON(PAWAZI);
+	TEST_3__LAMP_ON(PIOCIE);
+	//TEST_3__LAMP_ON(RAFAND);
+	//TEST_3__LAMP_ON(TOMWES);
+	//TEST_3__LAMP_ON(JARKUR);
+	//TEST_3__LAMP_ON(ADAKOR);
+	
     OUT_WHITE();
     return 0;
 }
