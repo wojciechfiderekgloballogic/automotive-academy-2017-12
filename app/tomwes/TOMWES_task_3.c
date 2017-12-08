@@ -45,8 +45,11 @@ eErr_t TOMWES_getLamp(eLamp_t eLamp, eLampState_t* eState){
     eErr_t eResult = E_OK;
     if( (eLamp < LAMP_START) || (eLamp >= LAMP_COUNT) ){
         eResult = E_INVALID_ARG_1;
+        eState = LAMP_STATE_UNDEFINED;
     }  
-    
+    if( eState == 0 ){
+        eResult = E_INVALID_ARG_2;
+    }  
     if (eState == 0){
         eResult = E_INVALID_ARG_2;
     }
