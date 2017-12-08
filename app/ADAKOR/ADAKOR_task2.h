@@ -5,8 +5,8 @@
  * History log:
  * 2017.12.06   ADAKOR  Initial version
  */
-#ifndef ADAKOR_TASK1_H
-#define ADAKOR_TASK1_H
+#ifndef ADAKOR_TASK2_H
+#define ADAKOR_TASK2_H
 
 #include "../common/COMMON_interface.h"
 
