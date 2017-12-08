@@ -24,15 +24,17 @@
 #include "tests.h"
 #include "test_1_setbitinterface.h"
 #include "test_2_setlampbit.h"
+#include "test_3_lamp_on.h"
 
 
 int main() {
     OUT_YELLOW();
     printf("Run tests\n");
     
-    
+         
     /* Add tests for your module when module interface ready */
     /* Below example should work in case if first task implemented due to requirements: */
+    printf("\n--------- TASK 1 ---------\n");
     TEST_1__SET_BIT_INTERFACE(WOJFID);
     TEST_1__SET_BIT_INTERFACE(TOMWES);
     TEST_1__SET_BIT_INTERFACE(GRZMAK);
@@ -44,6 +46,8 @@ int main() {
     TEST_1__SET_BIT_INTERFACE(JARKUR);
     TEST_1__SET_BIT_INTERFACE(ADAKOR);
 
+    
+    printf("\n--------- TASK 2 ---------\n");    
     //TEST_2__SET_LAMP_BIT(GRZMAK);
     //TEST_2__SET_LAMP_BIT(MARTOR);
     TEST_2__SET_LAMP_BIT(MICKAL);
@@ -54,6 +58,18 @@ int main() {
     //TEST_2__SET_LAMP_BIT(JARKUR);
     TEST_2__SET_LAMP_BIT(ADAKOR);
     
+    
+    printf("\n--------- TASK 3 ---------\n");    
+    TEST_3__LAMP_ON(WOJFID);
+    // TEST_3__LAMP_ON(TOMWES);
+    // TEST_3__LAMP_ON(GRZMAK);
+    // TEST_3__LAMP_ON(MARTOR);
+    // TEST_3__LAMP_ON(PAWAZI);
+    // TEST_3__LAMP_ON(MICKAL);
+    // TEST_3__LAMP_ON(PIOCIE);
+    // TEST_3__LAMP_ON(RAFAND);
+    // TEST_3__LAMP_ON(JARKUR);
+    // TEST_3__LAMP_ON(ADAKOR);
 
     OUT_WHITE();
     return 0;
