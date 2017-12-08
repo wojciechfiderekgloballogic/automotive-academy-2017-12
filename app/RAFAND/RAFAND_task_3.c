@@ -47,15 +47,17 @@ eErr_t RAFAND_lampOff(eLamp_t eLamp){
 }
 
 eErr_t RAFAND_getLamp(eLamp_t eLamp, eLampState_t* peState){
-	*peState = LAMP_STATE_UNDEFINED;						//default value of in case of errors we don't know state of lamp						
-	eErr_t eRet;
-	if((eRet=eNo__error(eLamp))==E_OK){					//if no errors
-		if(srgu8Arr[eLamp/OCTA] &= 1<<eLamp%OCTA){			//if bit is on
-			*peState = LAMP_STATE_ON;						//change state ON
-		}
-		else			
-		{
-			*peState = LAMP_STATE_OFF;					//else change state OFF
+	if(peState == NULL){
+		*peState = LAMP_STATE_UNDEFINED;						//default value of in case of errors we don't know state of lamp						
+		eErr_t eRet;
+		if((eRet=eNo__error(eLamp))==E_OK){					//if no errors
+			if(srgu8Arr[eLamp/OCTA] &= 1<<eLamp%OCTA){			//if bit is on
+				*peState = LAMP_STATE_ON;						//change state ON
+			}
+			else			
+			{
+				*peState = LAMP_STATE_OFF;					//else change state OFF
+			}
 		}
 	}
 	return eRet;											
