@@ -8,66 +8,67 @@
 
  
  #include "MICKAL_task3.h"
+ #include "stdint.h"
  
  
-static uint8_t storage[(LAMP_COUNT % 8 == 0) ? (LAMP_COUNT/8) : (LAMP_COUNT/8)+1];
+static uint8_t srgu8Storage[(LAMP_COUNT % 8 == 0) ? (LAMP_COUNT/8) : (LAMP_COUNT/8)+1];
  
  eErr_t MICKAL_lampOn(eLamp_t eLamp){
 	 
-	 eErr_t t = E_OK;
+	 eErr_t eValue = E_OK;
 	 
 	 if(eLamp >= LAMP_START && eLamp < LAMP_COUNT)
 	 {
-		storage[eLamp/8] |= 1 <<eLamp%8;
+		srgu8Storage[eLamp/8] |= 1 <<eLamp%8;
 	 }
 	 else
 	 {
-		 t = E_INVALID_ARG_1;
+		 eValue = E_INVALID_ARG_1;
 	 }
 	 
-	 return t; 
+	 return eValue; 
  }
  
  eErr_t MICKAL_lampOff(eLamp_t eLamp)
  {
 	 
-	 eErr_t t = E_OK;
+	 eErr_t eValue = E_OK;
 	 
 	 if(eLamp >= LAMP_START && eLamp < LAMP_COUNT)
 	 {
-		storage[eLamp/8] &=~(1<<eLamp%8);
+		srgu8Storage[eLamp/8] &=~(1<<eLamp%8);
 	 }
 	 else
 	 {
-		 t = E_INVALID_ARG_1;
+		 eValue = E_INVALID_ARG_1;
 	 }
 	 
-	 return t;  
+	 return eValue;  
  }
  
- eErr_t MICKAL_getLamp(eLamp_t eLamp, eLampState_t* eState)
+ eErr_t MICKAL_getLamp(eLamp_t eLamp, eLampState_t* peState)
  {
 	 
-	 eErr_t t = E_OK;
+	 eErr_t eValue = E_OK;
 	 
 	 if(eLamp >= LAMP_START && eLamp < LAMP_COUNT)
 	 {
-		if(storage[eLamp/8]&(1<<eLamp%8))
+		if(srgu8Storage[eLamp/8]&(1<<eLamp%8))
 		{
-			*state = LAMP_STATE_ON;
+			*peState = LAMP_STATE_ON;
 		}
 		else
 		{
-			*state = LAMP_STATE_OFF;
+			*peState = LAMP_STATE_OFF;
 		}
 	 }
 	 else
 	 {
-		 t = E_INVALID_ARG_1;
+		 eValue = E_INVALID_ARG_1;
 	 }
 	 
 	 
-	 return t; 
+	 return eValue; 
 	 
  }
  
