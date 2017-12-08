@@ -7,7 +7,7 @@
  */
 
 #include <stdio.h>
-#include "JARKUR_task2.h"
+#include "JARKUR_interface.h"
 
 eErr_t JARKUR_setLampBit(eLamp_t bit, int* reg) {
 		eErr_t flag = E_OK;
