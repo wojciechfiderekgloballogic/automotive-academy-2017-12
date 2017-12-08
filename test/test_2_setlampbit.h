@@ -3,6 +3,7 @@
  *
  *
  * History log:
+ * 2017.12.06   PioCie  Edited in line 30: eLampState_t* state
  * 2017.12.05   WojFid  Initial version
  */
 #pragma once
