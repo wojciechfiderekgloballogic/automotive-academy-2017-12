@@ -51,16 +51,21 @@ static uint8_t srgu8Storage[(LAMP_COUNT % 8 == 0) ? (LAMP_COUNT/8) : (LAMP_COUNT
 	 
 	 eErr_t eValue = E_OK;
 	 
-	 if(eLamp >= LAMP_START && eLamp < LAMP_COUNT)
+	 if(eLamp >= LAMP_START && eLamp < LAMP_COUNT && peState!=NULL)
 	 {
-		if(srgu8Storage[eLamp/8]&(1<<eLamp%8))
-		{
-			*peState = LAMP_STATE_ON;
-		}
-		else
-		{
-			*peState = LAMP_STATE_OFF;
-		}
+			if(srgu8Storage[eLamp/8]&(1<<eLamp%8))
+			{
+				*peState = LAMP_STATE_ON;
+			}
+			else
+			{
+				*peState = LAMP_STATE_OFF;
+			}
+	 }
+	 else if(peState == NULL)
+	 {
+		 eValue = E_INVALID_ARG_2;
+		 *peState = LAMP_STATE_UNDEFINED;
 	 }
 	 else
 	 {
