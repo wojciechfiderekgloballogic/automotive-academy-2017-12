@@ -16,7 +16,7 @@
 /* every public function in your module should start with "MODULENAME_" prefix */
 eErr_t JARKUR_lampOn(eLamp_t ELamp);
 eErr_t JARKUR_lampOff(eLamp_t eLamp);
-eErr_t JARKUR_getLamp(eLamp_t eLamp, eLampState_t* eState);
+eErr_t JARKUR_getLamp(eLamp_t eLamp, eLampState_t* peState);
 
 
 #endif // JARKUR_TASK3_H

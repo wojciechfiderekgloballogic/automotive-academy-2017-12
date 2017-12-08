@@ -69,7 +69,7 @@ int main() {
     // TEST_3__LAMP_ON(MICKAL);
     // TEST_3__LAMP_ON(PIOCIE);
     // TEST_3__LAMP_ON(RAFAND);
-    // TEST_3__LAMP_ON(JARKUR);
+    TEST_3__LAMP_ON(JARKUR);
     // TEST_3__LAMP_ON(ADAKOR);
 
     OUT_WHITE();
