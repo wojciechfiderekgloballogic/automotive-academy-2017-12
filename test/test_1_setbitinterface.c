@@ -18,9 +18,9 @@ void TEST_1_setBitInterface(
         
         
         
-        ASSERT( setBit(0, &v),     E_NOT_IMPLEMENTED );
-        ASSERT( clearBit(0, &v),   E_NOT_IMPLEMENTED );
-        ASSERT( invertBit(0, &v),  E_NOT_IMPLEMENTED );       
+        ASSERT( setBit(0, &v),     E_NOT_IMPLEMENTED, "" );
+        ASSERT( clearBit(0, &v),   E_NOT_IMPLEMENTED, "" );
+        ASSERT( invertBit(0, &v),  E_NOT_IMPLEMENTED, "" );       
         
         
         STOP_TEST;
