@@ -1,7 +1,6 @@
-/**
- * Responsible: Paw Azi
+ /*
  *
- *
+ *Paw Azi
  * History log:
  * 2017.12.06 changed files structure
  */
