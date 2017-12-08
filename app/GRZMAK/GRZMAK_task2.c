@@ -12,82 +12,82 @@
 
 
 
-eErr_t GRZMAK_setLampBit( eLamp_t bit, int* reg)
+eErr_t GRZMAK_setLampBit( eLamp_t eBit, int* piReg)
 {
-	eErr_t retval = E_OK;
+	eErr_t eRetval = E_OK;
 	
-	if(bit < LAMP_START || bit > LAMP_COUNT)
+	if(eBit < LAMP_START || eBit > LAMP_COUNT)
 	{
-		retval = E_INVALID_ARG_1;
+		eRetval = E_INVALID_ARG_1;
 	}
-	if(reg == NULL)
+	if(piReg == NULL)
 	{
-		retval = E_INVALID_ARG_2;
+		eRetval = E_INVALID_ARG_2;
 	}
 	else
 	{
-		*reg = (1 << bit) | *reg;
+		*piReg = (1 << eBit) | *piReg;
 	}
-	return retval;
+	return eRetval;
 	
 }
-eErr_t GRZMAK_clearLampBit( eLamp_t bit, int* reg)
+eErr_t GRZMAK_clearLampBit( eLamp_t eBit, int* piReg)
 {
-	eErr_t retval = E_OK;
-	if(bit < LAMP_START || bit > LAMP_COUNT)
+	eErr_t eRetval = E_OK;
+	if(eBit < LAMP_START || eBit > LAMP_COUNT)
 	{
-		retval = E_INVALID_ARG_1;
+		eRetval = E_INVALID_ARG_1;
 	}
-	if(reg == NULL)
+	if(piReg == NULL)
 	{
-		retval = E_INVALID_ARG_2;
+		eRetval = E_INVALID_ARG_2;
 	}		
 	else
 	{
-		*reg = ~(1<<bit) & *reg;
+		*piReg = ~(1<<eBit) & *piReg;
 	}	
-	return retval;
+	return eRetval;
 }
 
-eErr_t GRZMAK_invertLampBit( eLamp_t bit, int* reg)
+eErr_t GRZMAK_invertLampBit( eLamp_t eBit, int* piReg)
 {
-	eErr_t retval = E_OK;
-	if(bit < LAMP_START || bit > LAMP_COUNT)
+	eErr_t eRetval = E_OK;
+	if(eBit < LAMP_START || eBit > LAMP_COUNT)
 	{
-		retval = E_INVALID_ARG_1;
+		eRetval = E_INVALID_ARG_1;
 	}
-	if(reg == NULL)
+	if(piReg == NULL)
 	{
-		retval = E_INVALID_ARG_2;
+		eRetval = E_INVALID_ARG_2;
 	}
 	else
 	{
-		*reg = (1 << bit) ^ *reg;
+		*piReg = (1 << eBit) ^ *piReg;
 	}
-	return retval;
+	return eRetval;
 	
 }
 
-eErr_t GRZMAK_getLampState(eLamp_t bit, int reg, eLampState_t* state)
+eErr_t GRZMAK_getLampState(eLamp_t eBit, int iReg, eLampState_t* eState)
 {
 	
-	eErr_t retval = E_OK;
+	eErr_t eRetval = E_OK;
 	
-	if(bit < LAMP_START || bit > LAMP_COUNT)
+	if(eBit < LAMP_START || eBit > LAMP_COUNT)
 	{
-		retval = E_INVALID_ARG_1;
+		eRetval = E_INVALID_ARG_1;
 	}
 
 	
 	
-	if(reg & (1<<bit))
+	if(iReg & (1<<eBit))
 	{
-		*state = LAMP_STATE_ON;
+		*eState = LAMP_STATE_ON;
 	}
 	else
 	{
-		*state = LAMP_STATE_OFF;
+		*eState = LAMP_STATE_OFF;
 	}
 	
-	return retval;
+	return eRetval;
 }
