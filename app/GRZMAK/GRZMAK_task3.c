@@ -10,14 +10,14 @@
 #include "GRZMAK_task3.h"
 #include <stdint.h>
 
-static uint8_t u8LampArr[(LAMP_COUNT % 8 == 0) ? (LAMP_COUNT / 8) : (LAMP_COUNT / 8) + 1];
+static uint8_t srgu8LampArr[(LAMP_COUNT % 8 == 0) ? (LAMP_COUNT / 8) : (LAMP_COUNT / 8) + 1];
 
 eErr_t GRZMAK_lampOn(eLamp_t eLamp)
 {
 	eErr_t eRetval;
 	if(eLamp >= LAMP_START && eLamp < LAMP_COUNT)
 	{	
-		u8LampArr[eLamp/8] |= 1 << (eLamp % 8); 
+		srgu8LampArr[eLamp/8] |= 1 << (eLamp % 8); 
 		eRetval = E_OK; 
 	}
 	else
@@ -32,7 +32,7 @@ eErr_t GRZMAK_lampOff(eLamp_t eLamp)
 	eErr_t eRetval;
 	if(eLamp >= LAMP_START && eLamp < LAMP_COUNT)
 	{	
-		u8LampArr[eLamp/8] &= ~(1 << (eLamp % 8)); 
+		srgu8LampArr[eLamp/8] &= ~(1 << (eLamp % 8)); 
 		eRetval = E_OK; 
 	}
 	else
@@ -43,19 +43,19 @@ eErr_t GRZMAK_lampOff(eLamp_t eLamp)
 	return eRetval;	
 }
 
-eErr_t GRZMAK_getLamp(eLamp_t eLamp,eLampState_t* eState)
+eErr_t GRZMAK_getLamp(eLamp_t eLamp,eLampState_t* peState)
 {
 	eErr_t eRetval;
 	if(eLamp >= LAMP_START < LAMP_COUNT)
 	{
-		if(u8LampArr[eLamp/8] & 1<<eLamp)
+		if(srgu8LampArr[eLamp/8] & 1<<eLamp)
 		{
-			*eState = LAMP_STATE_ON;
+			*peState = LAMP_STATE_ON;
 			eRetval = E_OK;
 		}
 		else
 		{
-			*eState = LAMP_STATE_OFF;
+			*peState = LAMP_STATE_OFF;
 			eRetval = E_OK;
 		}
 	}
