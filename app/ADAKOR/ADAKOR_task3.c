@@ -63,7 +63,7 @@ eErr_t ADAKOR_getLamp(eLamp_t eLamp, eLampState_t* eState)
 			{
 				*eState = LAMP_STATE_OFF;
 			}
-			return eResult;
+			eResult = E_OK;
 		}
 		else
 		{

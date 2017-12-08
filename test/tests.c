@@ -60,7 +60,7 @@ int main() {
     
     
     printf("\n--------- TASK 3 ---------\n");    
-    TEST_3__LAMP_ON(WOJFID);
+    //TEST_3__LAMP_ON(WOJFID);
     // TEST_3__LAMP_ON(TOMWES);
     // TEST_3__LAMP_ON(GRZMAK);
     // TEST_3__LAMP_ON(MARTOR);
@@ -69,7 +69,7 @@ int main() {
     // TEST_3__LAMP_ON(PIOCIE);
     // TEST_3__LAMP_ON(RAFAND);
     // TEST_3__LAMP_ON(JARKUR);
-    // TEST_3__LAMP_ON(ADAKOR);
+    TEST_3__LAMP_ON(ADAKOR);
 
     OUT_WHITE();
     return 0;
