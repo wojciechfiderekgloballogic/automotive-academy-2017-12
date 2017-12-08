@@ -18,7 +18,7 @@
 /* Every public function in your module should start with   "MODULENAME_"   prefix */
 /* Every private function in your module should start with  "MODULENAME__"  prefix */
 
-static uint8_t srgu8Arr[LAMP_COUNT%OCTA?LAMP_COUNT/OCTA+1:LAMP_COUNT];	//we allocate more memory if there LAMP_COUNT % 8 is true
+static uint8_t srgu8Arr[LAMP_COUNT % OCTA ? LAMP_COUNT / OCTA + 1 : LAMP_COUNT];	//we allocate more memory if there LAMP_COUNT % 8 is true
 
 
 //private func that check state of errors
@@ -49,10 +49,9 @@ eErr_t RAFAND_lampOff(eLamp_t eLamp){
 eErr_t RAFAND_getLamp(eLamp_t eLamp, eLampState_t* peState){
 	eErr_t eRet=E_INVALID_ARG_2;					
 	if(peState != NULL){										//if null then
-		*peState = LAMP_STATE_UNDEFINED;						//default value of in case of errors we don't know state of lamp						
-		
+		*peState = LAMP_STATE_UNDEFINED;						//default value of in case of errors we don't know state of lamp		
 		if((eRet=eNo__error(eLamp))==E_OK){					//if no errors
-			if(srgu8Arr[eLamp/OCTA] &= 1<<eLamp%OCTA){			//if bit is on
+			if(srgu8Arr[eLamp/OCTA] & 1<<eLamp%OCTA){			//if bit is on
 				*peState = LAMP_STATE_ON;						//change state ON
 			}
 			else			
