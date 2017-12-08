@@ -18,45 +18,45 @@
 /* Every public function in your module should start with   "MODULENAME_"   prefix */
 /* Every private function in your module should start with  "MODULENAME__"  prefix */
 
-static uint8_t arr[LAMP_COUNT%OCTA?LAMP_COUNT/OCTA+1:LAMP_COUNT];	//we allocate more memory if there LAMP_COUNT % 8 is true
+static uint8_t srgu8Arr[LAMP_COUNT%OCTA?LAMP_COUNT/OCTA+1:LAMP_COUNT];	//we allocate more memory if there LAMP_COUNT % 8 is true
 
 
 //private func that check state of errors
-eErr_t no__error(eLamp_t eLamp){
-	eErr_t ret=E_OK;
+eErr_t eNo__error(eLamp_t eLamp){
+	eErr_t eRet=E_OK;
 	if(eLamp<0 || eLamp >= LAMP_COUNT){					//if arg1 is between 0 and LAMP_COUNT then it is correct arg1 
-		ret E_INVALID_ARG_1;
+		eRet = E_INVALID_ARG_1;
 	}
-	return ret;											//else ret error
+	return eRet;											//else ret error
 }
 
 eErr_t RAFAND_lampOn(eLamp_t eLamp){
-	eErr_t ret;
-	if((ret=no__error(eLamp))==E_OK){					//if no error then true		
-		arr[eLamp/OCTA] ^= 1<<eLamp%OCTA;				//set on specific bit
+	eErr_t eRet;
+	if((eRet=eNo__error(eLamp))==E_OK){					//if no error then true		
+		srgu8Arr[eLamp/OCTA] ^= 1<<eLamp%OCTA;				//set on specific bit
 	}
-	return ret;
+	return eRet;
 }
 
 eErr_t RAFAND_lampOff(eLamp_t eLamp){
-	eErr_t ret;
-	if((ret=no__error(eLamp))==E_OK){
-		arr[eLamp/OCTA] &= ~(1<<eLamp%OCTA);			//set off specific bit
+	eErr_t eRet;
+	if((eRet=eNo__error(eLamp))==E_OK){
+		srgu8Arr[eLamp/OCTA] &= ~(1<<eLamp%OCTA);			//set off specific bit
 	}
-	return ret;
+	return eRet;
 }
 
-eErr_t RAFAND_getLamp(eLamp_t eLamp, eLampState_t* state){
-	*state = LAMP_STATE_UNDEFINED;						//default value of in case of errors we don't know state of lamp						
-	eErr_t ret;
-	if((ret=no__error(eLamp))==E_OK){					//if no errors
-		if(arr[eLamp/OCTA] &= 1<<eLamp%OCTA){			//if bit is on
-			*state = LAMP_STATE_ON;						//change state ON
+eErr_t RAFAND_getLamp(eLamp_t eLamp, eLampState_t* peState){
+	*peState = LAMP_STATE_UNDEFINED;						//default value of in case of errors we don't know state of lamp						
+	eErr_t eRet;
+	if((eRet=eNo__error(eLamp))==E_OK){					//if no errors
+		if(srgu8Arr[eLamp/OCTA] &= 1<<eLamp%OCTA){			//if bit is on
+			*peState = LAMP_STATE_ON;						//change state ON
 		}
 		else			
 		{
-			*state = LAMP_STATE_OFF;					//else change state OFF
+			*peState = LAMP_STATE_OFF;					//else change state OFF
 		}
 	}
-	return ret;											
+	return eRet;											
 }

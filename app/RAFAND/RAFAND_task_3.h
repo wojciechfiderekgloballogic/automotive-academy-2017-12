@@ -20,5 +20,5 @@ eErr_t RAFAND_lampOn(eLamp_t eLamp);
 eErr_t RAFAND_lampOff(eLamp_t eLamp);
 
 //check state of specific bit in array (where eLamp is index) 
-eErr_t RAFAND_getLamp(eLamp_t eLamp, eLampState_t* state);
+eErr_t RAFAND_getLamp(eLamp_t eLamp, eLampState_t* peState);
 #endif
