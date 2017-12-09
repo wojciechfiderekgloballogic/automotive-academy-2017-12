@@ -8,6 +8,7 @@
  */
 #include "TOMWES_task_2.h"
 #include <stdio.h>
+#include <stdint.h>
 
  
 eErr_t TOMWES_setLampBit(eLamp_t bit, int* reg){
