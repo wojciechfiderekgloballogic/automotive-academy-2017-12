@@ -13,5 +13,6 @@
 
 #include "TOMWES_task_1.h"
 #include "TOMWES_task_2.h"
+#include "TOMWES_task_3.h"
 
 #endif
