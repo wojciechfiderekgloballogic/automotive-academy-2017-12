@@ -10,5 +10,5 @@
 #define RAFAND_INTERFACE_H
 // Every function that is exposed should be placed here
 #include "RAFAND_task_1.h"
-
+#include "RAFAND_task_2.h"
 #endif

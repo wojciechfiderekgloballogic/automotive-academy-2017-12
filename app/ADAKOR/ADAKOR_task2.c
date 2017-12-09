@@ -13,42 +13,88 @@
 
 eErr_t ADAKOR_setLampBit(eLamp_t bit, int* reg)
 {
-	if (bit >= LAMP_START && bit <= LAMP_COUNT)
+	eErr_t result;
+	if (reg == 0)
 	{
-		*reg = (1 << bit) | *reg;
-		return E_OK;
+		result = E_INVALID_ARG_2;
 	}
 	else
 	{
-		return E_INVALID_ARG_1;
+		if (bit >= LAMP_START && bit <= LAMP_COUNT)
+		{
+			*reg = (1 << bit) | *reg;
+			result = E_OK;
+		}
+		else
+		{
+			result = E_INVALID_ARG_1;
+		}
 	}
+	return result;
 }
 
 eErr_t ADAKOR_clearLampBit(eLamp_t bit, int* reg)
 {
-	if (bit >= LAMP_START && bit <= LAMP_COUNT)
+	eErr_t result;
+	if (reg == 0)
 	{
-		*reg &= ~(1 << bit);
+		result = E_INVALID_ARG_2;
 	}
 	else
-	{
-		return E_INVALID_ARG_1;
+		{
+		if (bit >= LAMP_START && bit <= LAMP_COUNT)
+		{
+			*reg &= ~(1 << bit);
+			result = E_OK;
+		}
+		else
+		{
+			result = E_INVALID_ARG_1;
+		}
 	}
+	return result;
 }
 
 eErr_t ADAKOR_invertLampBit(eLamp_t bit, int* reg)
 {
-	if (bit >= LAMP_START && bit <= LAMP_COUNT)
+	eErr_t result;
+	if (reg == 0)
 	{
-		*reg ^= (1 << bit);
+		result = E_INVALID_ARG_2;
 	}
 	else
 	{
-		return E_INVALID_ARG_1;
+		if (bit >= LAMP_START && bit <= LAMP_COUNT)
+		{
+			*reg ^= (1 << bit);
+			result = E_OK;
+		}
+		else
+		{
+			result = E_INVALID_ARG_1;
+		}
 	}
+	return result;
 }
 
 eErr_t ADAKOR_getLampState(eLamp_t bit, int reg, eLampState_t* state)
 {
-	
+	eErr_t result;
+	if (bit >= LAMP_START && bit < LAMP_COUNT)
+	{
+		if ((reg & (1 << bit)) != 0)
+		{
+			*state = LAMP_STATE_ON;
+		}
+		else
+		{
+			*state = LAMP_STATE_OFF;
+		}
+		result = E_OK;
+	}
+	else
+	{
+		result = E_INVALID_ARG_1;
+	}
+	return result;
 }
