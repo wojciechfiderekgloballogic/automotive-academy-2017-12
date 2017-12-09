@@ -48,7 +48,7 @@ int main() {
 
     
     printf("\n--------- TASK 2 ---------\n");    
-    //TEST_2__SET_LAMP_BIT(GRZMAK);
+    TEST_2__SET_LAMP_BIT(GRZMAK);
     //TEST_2__SET_LAMP_BIT(MARTOR);
     TEST_2__SET_LAMP_BIT(MICKAL);
     TEST_2__SET_LAMP_BIT(PAWAZI);
