@@ -3,7 +3,7 @@
  *
  *
  * History log:
- * 2017.12.05 Adding empty setBit function
+ * 2017.12.05 TOMWES Initial version
  */
  #include "TOMWES_task_1.h"
  
