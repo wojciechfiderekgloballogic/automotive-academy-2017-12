@@ -65,7 +65,7 @@ int main() {
     TEST_3__LAMP_ON(TOMWES);
     TEST_3__LAMP_ON(GRZMAK);
     // TEST_3__LAMP_ON(MARTOR);
-    // TEST_3__LAMP_ON(PAWAZI);
+    TEST_3__LAMP_ON(PAWAZI);
     // TEST_3__LAMP_ON(MICKAL);
     // TEST_3__LAMP_ON(PIOCIE);
     // TEST_3__LAMP_ON(RAFAND);
