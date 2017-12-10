@@ -1,5 +1,5 @@
 CC = gcc
-
+CFLAGS = -pedantic
 
 src = \
 	$(wildcard test/*.c) \

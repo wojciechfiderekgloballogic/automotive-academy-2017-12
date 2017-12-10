@@ -12,70 +12,82 @@
 
 
 
-eErr_t GRZMAK_setLampBit( eLamp_t bit, int* reg)
+eErr_t GRZMAK_setLampBit( eLamp_t eBit, int* piReg)
 {
-	if(bit < LAMP_START || bit >= LAMP_COUNT)
+	eErr_t eRetval = E_OK;
+	
+	if(eBit < LAMP_START || eBit > LAMP_COUNT)
 	{
-		return E_INVALID_ARG_1;
+		eRetval = E_INVALID_ARG_1;
 	}
-	if(reg == NULL)
+	if(piReg == NULL)
 	{
-		return E_INVALID_ARG_2;
-	}
-	
-	*reg = (1 << bit) | *reg;	
-	return E_OK;
-	
-}
-eErr_t GRZMAK_clearLampBit( eLamp_t bit, int* reg)
-{
-	if(bit < LAMP_START || bit >= LAMP_COUNT)
-	{
-		return E_INVALID_ARG_1;
-	}
-	if(reg == NULL)
-	{
-		return E_INVALID_ARG_2;
-	}
-	
-	*reg = ~(1<<bit) & *reg;
-	return E_OK;
-	
-}
-
-eErr_t GRZMAK_invertLampBit( eLamp_t bit, int* reg)
-{
-	if(bit < LAMP_START || bit >= LAMP_COUNT)
-	{
-		return E_INVALID_ARG_1;
-	}
-	if(reg == NULL)
-	{
-		return E_INVALID_ARG_2;
-	}
-	
-	*reg = (1 << bit) ^ *reg;
-	return E_OK;
-	
-}
-
-eErr_t GRZMAK_getLampState(eLamp_t bit, int reg, eLampState_t* state)
-{
-	if(bit < LAMP_START || bit >= LAMP_COUNT)
-	{
-		return E_INVALID_ARG_1;
-	}
-
-	
-	
-	if(reg & (1<<bit))
-	{
-		*state = LAMP_STATE_ON;
-		return E_OK;
+		eRetval = E_INVALID_ARG_2;
 	}
 	else
 	{
-		*state = LAMP_STATE_OFF;
-		return E_OK;
+		*piReg = (1 << eBit) | *piReg;
 	}
+	return eRetval;
+	
+}
+eErr_t GRZMAK_clearLampBit( eLamp_t eBit, int* piReg)
+{
+	eErr_t eRetval = E_OK;
+	if(eBit < LAMP_START || eBit > LAMP_COUNT)
+	{
+		eRetval = E_INVALID_ARG_1;
+	}
+	if(piReg == NULL)
+	{
+		eRetval = E_INVALID_ARG_2;
+	}		
+	else
+	{
+		*piReg = ~(1<<eBit) & *piReg;
+	}	
+	return eRetval;
+}
+
+eErr_t GRZMAK_invertLampBit( eLamp_t eBit, int* piReg)
+{
+	eErr_t eRetval = E_OK;
+	if(eBit < LAMP_START || eBit > LAMP_COUNT)
+	{
+		eRetval = E_INVALID_ARG_1;
+	}
+	if(piReg == NULL)
+	{
+		eRetval = E_INVALID_ARG_2;
+	}
+	else
+	{
+		*piReg = (1 << eBit) ^ *piReg;
+	}
+	return eRetval;
+	
+}
+
+eErr_t GRZMAK_getLampState(eLamp_t eBit, int iReg, eLampState_t* eState)
+{
+	
+	eErr_t eRetval = E_OK;
+	
+	if(eBit < LAMP_START || eBit > LAMP_COUNT)
+	{
+		eRetval = E_INVALID_ARG_1;
+	}
+
+	
+	
+	if(iReg & (1<<eBit))
+	{
+		*eState = LAMP_STATE_ON;
+	}
+	else
+	{
+		*eState = LAMP_STATE_OFF;
+	}
+	
+	return eRetval;
 }

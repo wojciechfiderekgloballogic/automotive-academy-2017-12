@@ -14,8 +14,8 @@
 
 
 
-eErr_t GRZMAK_setLampBit( eLamp_t bit, int* reg);
-eErr_t GRZMAK_clearLampBit( eLamp_t bit, int* reg);
-eErr_t GRZMAK_invertLampBit( eLamp_t bit, int* reg);
-eErr_t GRZMAK_getLampState( eLamp_t bit, int reg, eLampState_t* state);
+eErr_t GRZMAK_setLampBit( eLamp_t eBit, int* piReg);
+eErr_t GRZMAK_clearLampBit( eLamp_t eBit, int* piReg);
+eErr_t GRZMAK_invertLampBit( eLamp_t eBit, int* piReg);
+eErr_t GRZMAK_getLampState( eLamp_t eBit, int iReg, eLampState_t* eState);
 #endif
