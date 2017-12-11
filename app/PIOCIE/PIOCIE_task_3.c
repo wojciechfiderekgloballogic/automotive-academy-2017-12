@@ -31,7 +31,7 @@ eErr_t PIOCIE_lampOn(eLamp_t eLamp)
 		eResult=E_OK;
 	}
 	return eResult;
-};
+}
 
 eErr_t PIOCIE_lampOff(eLamp_t eLamp)
 {
@@ -50,7 +50,7 @@ eErr_t PIOCIE_lampOff(eLamp_t eLamp)
 		eResult=E_OK;
 	}
 	return eResult;
-};
+}
 
 eErr_t PIOCIE_getLamp(eLamp_t eLamp, eLampState_t* eState)
 {
@@ -63,7 +63,6 @@ eErr_t PIOCIE_getLamp(eLamp_t eLamp, eLampState_t* eState)
 	else if(NULL==eState)
 	{
 		eResult=E_INVALID_ARG_2;
-		*eState=LAMP_STATE_UNDEFINED;
 	}
 	else
 	{
@@ -78,4 +77,4 @@ eErr_t PIOCIE_getLamp(eLamp_t eLamp, eLampState_t* eState)
 		eResult=E_OK;
 	}
 	return eResult;
-};
+}
