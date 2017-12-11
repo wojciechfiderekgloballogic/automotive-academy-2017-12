@@ -16,7 +16,6 @@ int isTheOnlyBitSet(eLamp_t bit, int reg) {
         if( i == bit ) {
             continue;
         }
-
         if( (reg >> i) & 1 ) {
             result = 0;
         }

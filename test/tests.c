@@ -49,28 +49,29 @@ int main() {
 
     
     printf("\n--------- TASK 2 ---------\n");    
-    //TEST_2__SET_LAMP_BIT(GRZMAK);
+    TEST_2__SET_LAMP_BIT(GRZMAK);
     //TEST_2__SET_LAMP_BIT(MARTOR);
     TEST_2__SET_LAMP_BIT(MICKAL);
-    //TEST_2__SET_LAMP_BIT(PAWAZI);
+    TEST_2__SET_LAMP_BIT(PAWAZI);
     TEST_2__SET_LAMP_BIT(PIOCIE);
     TEST_2__SET_LAMP_BIT(RAFAND);
-    //TEST_2__SET_LAMP_BIT(TOMWES);
-    //TEST_2__SET_LAMP_BIT(JARKUR);
+    TEST_2__SET_LAMP_BIT(TOMWES);
+    TEST_2__SET_LAMP_BIT(JARKUR);
     TEST_2__SET_LAMP_BIT(ADAKOR);
+
     
     
     printf("\n--------- TASK 3 ---------\n");    
     //TEST_3__LAMP_ON(WOJFID);
-    // TEST_3__LAMP_ON(TOMWES);
-    // TEST_3__LAMP_ON(GRZMAK);
+    TEST_3__LAMP_ON(TOMWES);
+    TEST_3__LAMP_ON(GRZMAK);
     // TEST_3__LAMP_ON(MARTOR);
-    // TEST_3__LAMP_ON(PAWAZI);
+    TEST_3__LAMP_ON(PAWAZI);
     // TEST_3__LAMP_ON(MICKAL);
      TEST_3__LAMP_ON(PIOCIE);
     // TEST_3__LAMP_ON(RAFAND);
-    // TEST_3__LAMP_ON(JARKUR);
-    // TEST_3__LAMP_ON(ADAKOR);
+    TEST_3__LAMP_ON(JARKUR);
+    TEST_3__LAMP_ON(ADAKOR);
 
     OUT_WHITE();
     return 0;
