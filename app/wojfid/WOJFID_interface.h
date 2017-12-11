@@ -10,5 +10,6 @@
 
 // Every function that is exposed should be placed here
 #include "wojfid_example.h"
+#include "WOJFID_buttons_handler.h"
 
 
