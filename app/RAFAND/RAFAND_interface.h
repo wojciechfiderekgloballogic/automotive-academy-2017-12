@@ -3,6 +3,7 @@
  *
  *
  * History log:
+ * 2017.12.07	RafAnd	Array implementation
  * 2017.12.06   RafAnd  My version
  */
 
