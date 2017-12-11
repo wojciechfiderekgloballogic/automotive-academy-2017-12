@@ -6,9 +6,9 @@ Your task is to create buttons handlers.
 -------------------------------------------------
 
 Implement 3 functions:
-1)    void   (*vHandleButtons)        (void),
-2)    eErr_t (*eAddOnPressListener)   (eButton_t eButton, eErr_t (*onPressListener) (eButton_t)),
-3)    eErr_t (*eAddOnReleaseListener) (eButton_t eButton, eErr_t (*onPressListener) (eButton_t))
+1)    void   vHandleButtons        (void),
+2)    eErr_t eAddOnPressListener   (eButton_t eButton, eErr_t (*onPressListener)   (eButton_t)),
+3)    eErr_t eAddOnReleaseListener (eButton_t eButton, eErr_t (*onReleaseListener) (eButton_t))
 
 
 -------------------------------------------------
