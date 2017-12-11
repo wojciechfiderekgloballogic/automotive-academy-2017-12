@@ -29,7 +29,9 @@ typedef enum eErr {
     E_INVALID_ARG_2,    /* Second -||- */
     
     E_NOT_IMPLEMENTED,  /* Functionality not yet implemented (so should not be used) */
-    E_MALLOC            /* Memory allocation error */
+    E_MALLOC,           /* Memory allocation error */
+    
+    E_LISTENER_ALREADY_EXISTS
     
 } eErr_t;
 
@@ -81,3 +83,15 @@ typedef enum eLampState {
     LAMP_STATE_OFF,
     LAMP_STATE_ON
 } eLampState_t;
+
+/**
+ * Buttons ids
+ */
+typedef enum eButton {
+    BUTTON_START = 0,
+    BUTTON_0 = BUTTON_START,
+    BUTTON_1,
+    BUTTON_2,
+    BUTTON_COUNT
+} eButton_t;
+
