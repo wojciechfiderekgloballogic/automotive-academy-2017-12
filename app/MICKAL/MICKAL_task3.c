@@ -11,7 +11,7 @@
  #include "stdint.h"
  
  
-static uint8_t srgu8Storage[(LAMP_COUNT % 8 == 0) ? (LAMP_COUNT/8) : (LAMP_COUNT/8)+1];
+static uint8_t au8Storage[LAMP_COUNT/8 + (LAMP_COUNT%8) ? 1 : 0];
  
  eErr_t MICKAL_lampOn(eLamp_t eLamp){
 	 
@@ -19,7 +19,7 @@ static uint8_t srgu8Storage[(LAMP_COUNT % 8 == 0) ? (LAMP_COUNT/8) : (LAMP_COUNT
 	 
 	 if(eLamp >= LAMP_START && eLamp < LAMP_COUNT)
 	 {
-		srgu8Storage[eLamp/8] |= 1 <<eLamp%8;
+		au8Storage[eLamp/8] |= 1 <<eLamp%8;
 	 }
 	 else
 	 {
@@ -36,7 +36,7 @@ static uint8_t srgu8Storage[(LAMP_COUNT % 8 == 0) ? (LAMP_COUNT/8) : (LAMP_COUNT
 	 
 	 if(eLamp >= LAMP_START && eLamp < LAMP_COUNT)
 	 {
-		srgu8Storage[eLamp/8] &=~(1<<eLamp%8);
+		au8Storage[eLamp/8] &=~(1<<eLamp%8);
 	 }
 	 else
 	 {
@@ -53,7 +53,7 @@ static uint8_t srgu8Storage[(LAMP_COUNT % 8 == 0) ? (LAMP_COUNT/8) : (LAMP_COUNT
 	 
 	 if(eLamp >= LAMP_START && eLamp < LAMP_COUNT && peState!=NULL)
 	 {
-			if(srgu8Storage[eLamp/8]&(1<<eLamp%8))
+			if(au8Storage[eLamp/8]&(1<<eLamp%8))
 			{
 				*peState = LAMP_STATE_ON;
 			}
@@ -65,11 +65,11 @@ static uint8_t srgu8Storage[(LAMP_COUNT % 8 == 0) ? (LAMP_COUNT/8) : (LAMP_COUNT
 	 else if(peState == NULL)
 	 {
 		 eValue = E_INVALID_ARG_2;
-		 *peState = LAMP_STATE_UNDEFINED;
 	 }
 	 else
 	 {
 		 eValue = E_INVALID_ARG_1;
+		 eValue = LAMP_STATE_UNDEFINED;
 	 }
 	 
 	 
