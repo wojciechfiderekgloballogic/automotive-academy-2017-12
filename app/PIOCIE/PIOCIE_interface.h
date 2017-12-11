@@ -11,6 +11,7 @@
 
 
 // Every function that is exposed should be placed here
+#include "PIOCIE_task_3.h"
 #include "PIOCIE_task_2.h"
 #include "PIOCIE_task_1.h"
 

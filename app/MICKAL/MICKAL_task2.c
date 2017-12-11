@@ -10,7 +10,7 @@
  #include "MICKAL_task2.h"
  
  
- eErr_t MICKAL_setLampeBit(eLamp_t eBit, int* piReg){
+ eErr_t MICKAL_setLampBit(eLamp_t eBit, int* piReg){
 	 if(eBit < LAMP_START || eBit > LAMP_COUNT)
 		 return E_INVALID_ARG_1;
 	 if(piReg==NULL)
@@ -20,7 +20,7 @@
 	return E_OK;
 }
 
-eErr_t MICKAL_clearLampeBit(eLamp_t eBit, int* piReg){
+eErr_t MICKAL_clearLampBit(eLamp_t eBit, int* piReg){
 	if(eBit < LAMP_START || eBit > LAMP_COUNT)
 		 return E_INVALID_ARG_1;
 	if(piReg==NULL)
@@ -31,7 +31,7 @@ eErr_t MICKAL_clearLampeBit(eLamp_t eBit, int* piReg){
 	return E_OK;
 }
 
-eErr_t MICKAL_invertLampeBit(eLamp_t eBit, int* piReg){
+eErr_t MICKAL_invertLampBit(eLamp_t eBit, int* piReg){
 	if(eBit < LAMP_START || eBit > LAMP_COUNT)
 		 return E_INVALID_ARG_1;
 	if(piReg==NULL)
