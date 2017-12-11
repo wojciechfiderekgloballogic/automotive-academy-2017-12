@@ -3,6 +3,7 @@
  *
  *
  * History log:
+ * 2017.12.08   PioCie  Added test 3
  * 2017.12.05   WojFid  Task 2 tests introduced (set lamp bit)
  * 2017.12.05   TomWes  Added another interface
  * 2017.12.01   WojFid  Initial version
@@ -67,7 +68,7 @@ int main() {
     // TEST_3__LAMP_ON(MARTOR);
     TEST_3__LAMP_ON(PAWAZI);
     TEST_3__LAMP_ON(MICKAL);
-    // TEST_3__LAMP_ON(PIOCIE);
+    TEST_3__LAMP_ON(PIOCIE);
     TEST_3__LAMP_ON(RAFAND);
     TEST_3__LAMP_ON(JARKUR);
     TEST_3__LAMP_ON(ADAKOR);
