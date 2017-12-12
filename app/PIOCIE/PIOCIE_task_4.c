@@ -101,7 +101,7 @@ int buttonState(eButton_t eButton)
 
 
 
-eErr_t initButtons(void)
+eErr_t PIOCIE_eInitButtons(void)
 {			
 	eErr_t eReturn=E_OK;
 	int i=0;
@@ -120,7 +120,7 @@ eErr_t initButtons(void)
 	return eReturn;
 }
 
-void vHandleButtons (void){															//Executes button functions
+void PIOCIE_vHandleButtons (void){															//Executes button functions
 	int i=0;
 	for(i=0;i<BUTTON_COUNT;i++)
 	{
@@ -147,7 +147,7 @@ void vHandleButtons (void){															//Executes button functions
 	}
 }
 
-eErr_t eAddOnPressListener   (eButton_t eButton, eErr_t (*onPressListener) (eButton_t)){
+eErr_t PIOCIE_eAddOnPressListener   (eButton_t eButton, eErr_t (*onPressListener) (eButton_t)){
 	eErr_t eReturn;
 	if(NULL==onPressListener)
 	{
@@ -164,7 +164,7 @@ eErr_t eAddOnPressListener   (eButton_t eButton, eErr_t (*onPressListener) (eBut
 	return eReturn;
 }
 
-eErr_t eAddOnReleaseListener (eButton_t eButton, eErr_t (*onPressListener) (eButton_t)){
+eErr_t PIOCIE_eAddOnReleaseListener (eButton_t eButton, eErr_t (*onPressListener) (eButton_t)){
 	eErr_t eReturn;
 	if(NULL==onPressListener)
 	{
