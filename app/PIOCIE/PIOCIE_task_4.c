@@ -108,26 +108,6 @@ void PIOCIE_vInit(void)
 	}
 }
 
-/*
-eErr_t PIOCIE_vInit(void)
-{			
-	eErr_t eReturn=E_OK;
-	int i;
-	for(i=0;i<BUTTON_COUNT;i++)															//allocate adresses for all buttons
-	{
-		if(NULL==(aButtonsPress[i]=alloc_sButtonListener(0)).eArr)						//Press
-		{
-			eReturn=E_MALLOC;
-		}
-		if(NULL==(aButtonsRelease[i]=alloc_sButtonListener(0)).eArr)						//Release
-		{
-			eReturn=E_MALLOC;
-		}
-		iaButtonStatus[i]=iButtonState(i);													//Read button status
-	}
-	return eReturn;
-}
-*/
 void PIOCIE_vHandleButtons (void){															//Executes button functions
 	int i;
 	for(i=0;i<BUTTON_COUNT;i++)
