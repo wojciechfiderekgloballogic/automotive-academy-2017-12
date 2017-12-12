@@ -51,9 +51,23 @@
 
 /*
 	Attention!!
-	Update eMappedBtns after adding or removing buttons.
+	Update eMappedBtns after added or removed buttons.
 */
 static eButton_t eMappedBtns [BUTTON_COUNT] = {BUTTON_1,BUTTON_2,BUTTON_0};
+
+/*
+	Attention!!
+	Update eMappedArr after added or removed buttons.
+*/
+typedef enum eMappedArr{
+	
+	EMB_1 = 4,
+	EMB_2 = 0,
+	EMB_3 = 2	
+	
+}eMappedArr_t;
+
+static eMappedArr_t eMappedArrBtns [BUTTON_COUNT] = {EMB_1,EMB_2,EMB_3};
 
 
 static eErr_t (**eFunPtrArr[BUTTON_COUNT*2])(eButton_t);
@@ -170,71 +184,112 @@ eErr_t PAWAZI_eAddOnPressListener(eButton_t eButton, eErr_t (*onPressListener) (
 		eResult = E_INVALID_ARG_2;
 		
 	}else{
-
-		switch(eButton){
-			
-			case BUTTON_1 : {
+		
+		// case BUTTON_0 : {
 				
-				for(int i = 0 ; i < uiEachColumnSize[0] ; i++){
-					if(onPressListener == eFunPtrArr[0][i]){
-						eResult = E_LISTENER_ALREADY_EXISTS;
-						break;
-					}
-				}
-				
-				if(eResult != E_LISTENER_ALREADY_EXISTS){
-					eFunPtrArr[0][uiEachColumnSize[0]] = onPressListener;
-					uiEachColumnSize[0]++;			
-				}
-				
-				break;
-			}
-			
-			case BUTTON_2 : {
-				
-				for(int i = 0 ; i < uiEachColumnSize[2] ; i++){
-					if(onPressListener == eFunPtrArr[2][i]){
-						eResult = E_LISTENER_ALREADY_EXISTS;
-						break;
-					}
-				}
-				
-				if(eResult != E_LISTENER_ALREADY_EXISTS){
-					eFunPtrArr[2][uiEachColumnSize[2]] = onPressListener;
-					uiEachColumnSize[2]++;
+				// for(int i = 0 ; i < uiEachColumnSize[4]; i++){
 					
-				}
-				
-				break;
-	
-			}
-			
-			case BUTTON_0 : {
-				
-				for(int i = 0 ; i < uiEachColumnSize[4] + 1; i++){
+					// if(onPressListener == eFunPtrArr[4][i]){
+						// eResult = E_LISTENER_ALREADY_EXISTS;
+						// break;
+					// }						
 					
-					if(onPressListener == eFunPtrArr[4][i]){
-						eResult = E_LISTENER_ALREADY_EXISTS;
-						break;
-					}						
-					
-				}
+				// }
 				
-				if(eResult != E_LISTENER_ALREADY_EXISTS){
+				// if(eResult != E_LISTENER_ALREADY_EXISTS){
 				
-					eFunPtrArr[4][uiEachColumnSize[4]] = onPressListener;
-					uiEachColumnSize[4] ++;
+					// eFunPtrArr[4][uiEachColumnSize[4]] = onPressListener;
+					// uiEachColumnSize[4] ++;
 									
-				}
+				// }
 				
-				break;
+				// break;
+			// }
+		
+		
+			for ( int i = 0 ; i < uiEachColumnSize[eMappedArrBtns[eButton]] ; i++ ){
+				
+				if(onPressListener == eFunPtrArr[eMappedArrBtns[eButton]][i]){
+						eResult = E_LISTENER_ALREADY_EXISTS;
+						break;
+				}
 			}
+
+			if(eResult != E_LISTENER_ALREADY_EXISTS){
+				
+				eFunPtrArr[eMappedArrBtns[eButton]][uiEachColumnSize[eMappedArrBtns[eButton]]] = onPressListener;
+				uiEachColumnSize[eMappedArrBtns[eButton]]++;
+				
+			}				
 			
-			default:
-				break;
+
+		
+		
+
+		// switch(eButton){
+			
+			// case BUTTON_1 : {
+				
+				// for(int i = 0 ; i < uiEachColumnSize[0] ; i++){
+					// if(onPressListener == eFunPtrArr[0][i]){
+						// eResult = E_LISTENER_ALREADY_EXISTS;
+						// break;
+					// }
+				// }
+				
+				// if(eResult != E_LISTENER_ALREADY_EXISTS){
+					// eFunPtrArr[0][uiEachColumnSize[0]] = onPressListener;
+					// uiEachColumnSize[0]++;			
+				// }
+				
+				// break;
+			// }
+			
+			// case BUTTON_2 : {
+				
+				// for(int i = 0 ; i < uiEachColumnSize[2] ; i++){
+					// if(onPressListener == eFunPtrArr[2][i]){
+						// eResult = E_LISTENER_ALREADY_EXISTS;
+						// break;
+					// }
+				// }
+				
+				// if(eResult != E_LISTENER_ALREADY_EXISTS){
+					// eFunPtrArr[2][uiEachColumnSize[2]] = onPressListener;
+					// uiEachColumnSize[2]++;
+					
+				// }
+				
+				// break;
+	
+			// }
+			
+			// case BUTTON_0 : {
+				
+				// for(int i = 0 ; i < uiEachColumnSize[4]; i++){
+					
+					// if(onPressListener == eFunPtrArr[4][i]){
+						// eResult = E_LISTENER_ALREADY_EXISTS;
+						// break;
+					// }						
+					
+				// }
+				
+				// if(eResult != E_LISTENER_ALREADY_EXISTS){
+				
+					// eFunPtrArr[4][uiEachColumnSize[4]] = onPressListener;
+					// uiEachColumnSize[4] ++;
+									
+				// }
+				
+				// break;
+			// }
+			
+			// default:
+				// break;
 			
 			
-		}
+		// }
 	}
 		
 	return eResult;
@@ -255,65 +310,99 @@ eErr_t PAWAZI_eAddOnReleaseListener(eButton_t eButton, eErr_t (*onReleaseListene
 		eResult = E_INVALID_ARG_2;
 		
 	}else{
+		
+		// for ( int i = 0 ; i < uiEachColumnSize[eMappedArrBtns[eButton]] ; i++ ){
+				
+				// if(onPressListener == eFunPtrArr[eMappedArrBtns[eButton]][i]){
+						// eResult = E_LISTENER_ALREADY_EXISTS;
+						// break;
+				// }
+			// }
+
+			// if(eResult != E_LISTENER_ALREADY_EXISTS){
+				
+				// eFunPtrArr[eMappedArrBtns[eButton]][uiEachColumnSize[eMappedArrBtns[eButton]]] = onPressListener;
+				// uiEachColumnSize[eMappedArrBtns[eButton]]++;
+				
+			// }				
+		
+		//
+		unsigned int uiIndexBtnRel = eMappedArrBtns[eButton]+1;
+		
 	
-		switch(eButton){
+		for ( int i = 0 ; i < uiEachColumnSize[uiIndexBtnRel] ; i++ ){
 			
-			case BUTTON_1 : {
-				
-				for(int i = 0 ; i < uiEachColumnSize[1] ; i++){
-					if(onReleaseListener == eFunPtrArr[1][i]){
-						eResult = E_LISTENER_ALREADY_EXISTS;
-						break;
-					}
-				}
-				
-				if(eResult != E_LISTENER_ALREADY_EXISTS){
-					eFunPtrArr[1][uiEachColumnSize[1]] = onReleaseListener;
-					uiEachColumnSize[1]++;		
-				}
-				
-				break;
+			if(onReleaseListener == eFunPtrArr[uiIndexBtnRel][i]){
+					eResult = E_LISTENER_ALREADY_EXISTS;
+					break;
 			}
-			
-			case BUTTON_2 : {
-				
-				for(int i = 0 ; i < uiEachColumnSize[3] ; i++){
-					if(onReleaseListener == eFunPtrArr[3][i]){
-						eResult = E_LISTENER_ALREADY_EXISTS;
-						break;
-					}
-				}
-				
-				if(eResult != E_LISTENER_ALREADY_EXISTS){
-					eFunPtrArr[3][uiEachColumnSize[3]] = onReleaseListener;
-					uiEachColumnSize[3]++;		
-				}
-				
-				break;
-			}
-			
-			case BUTTON_0 : {
-			
-				
-				for(int i = 0 ; i < uiEachColumnSize[5]; i++){		
-					if(onReleaseListener == eFunPtrArr[5][i]){			
-						eResult = E_LISTENER_ALREADY_EXISTS;
-						break;
-					}						
-				}
-				
-				if(eResult != E_LISTENER_ALREADY_EXISTS){				
-					eFunPtrArr[5][uiEachColumnSize[5]] = onReleaseListener;
-					uiEachColumnSize[5]++;		
-				}
-				
-				break;
-			}
-			
-			default:
-				break;		
-			
 		}
+
+		if(eResult != E_LISTENER_ALREADY_EXISTS){
+			
+			eFunPtrArr[uiIndexBtnRel][uiEachColumnSize[uiIndexBtnRel]] = onReleaseListener;
+			uiEachColumnSize[uiIndexBtnRel]++;
+			
+		}			
+	
+		// switch(eButton){
+			
+			// case BUTTON_1 : {
+				
+				// for(int i = 0 ; i < uiEachColumnSize[1] ; i++){
+					// if(onReleaseListener == eFunPtrArr[1][i]){
+						// eResult = E_LISTENER_ALREADY_EXISTS;
+						// break;
+					// }
+				// }
+				
+				// if(eResult != E_LISTENER_ALREADY_EXISTS){
+					// eFunPtrArr[1][uiEachColumnSize[1]] = onReleaseListener;
+					// uiEachColumnSize[1]++;		
+				// }
+				
+				// break;
+			// }
+			
+			// case BUTTON_2 : {
+				
+				// for(int i = 0 ; i < uiEachColumnSize[3] ; i++){
+					// if(onReleaseListener == eFunPtrArr[3][i]){
+						// eResult = E_LISTENER_ALREADY_EXISTS;
+						// break;
+					// }
+				// }
+				
+				// if(eResult != E_LISTENER_ALREADY_EXISTS){
+					// eFunPtrArr[3][uiEachColumnSize[3]] = onReleaseListener;
+					// uiEachColumnSize[3]++;		
+				// }
+				
+				// break;
+			// }
+			
+			// case BUTTON_0 : {
+			
+				
+				// for(int i = 0 ; i < uiEachColumnSize[5]; i++){		
+					// if(onReleaseListener == eFunPtrArr[5][i]){			
+						// eResult = E_LISTENER_ALREADY_EXISTS;
+						// break;
+					// }						
+				// }
+				
+				// if(eResult != E_LISTENER_ALREADY_EXISTS){				
+					// eFunPtrArr[5][uiEachColumnSize[5]] = onReleaseListener;
+					// uiEachColumnSize[5]++;		
+				// }
+				
+				// break;
+			// }
+			
+			// default:
+				// break;		
+			
+		// }
 	}
 	
 	
