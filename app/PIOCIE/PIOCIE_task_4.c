@@ -92,10 +92,7 @@ int buttonState(eButton_t eButton)
 			iReturn=IO_get(IO_PIN_2);//Button 0
 			break;
 		}
-		default:
-		{
-			iReturn=-1; 							//dunno
-		}
+		default:{break;}
 	}
 	return iReturn;
 }
@@ -139,7 +136,7 @@ void PIOCIE_vHandleButtons (void){															//Executes button functions
 		if(buttonStatus[i]!=buttonState(i))													//button status changed
 		{
 			buttonStatus[i]=buttonState(i);
-			if(0==buttonStatus[i])														//putton pressed (zmienic too 0 na zmienna jakas)
+			if(0==buttonStatus[i])														//button release (zmienic too 0 na zmienna jakas)
 			{
 				int j=0;
 				for(j=0;j<aButtonsRelease[i].size;j++)									//execute all functions attatched to button i
@@ -147,12 +144,12 @@ void PIOCIE_vHandleButtons (void){															//Executes button functions
 					aButtonsRelease[i].arr[j](i);
 				}
 			}
-			else if(1==buttonStatus[i])													//button released
+			else if(1==buttonStatus[i])													//button press
 			{
 				int j=0;
 				for(j=0;j<aButtonsPress[i].size;j++)									//execute all functions attatched to button i
 				{
-					aButtonsRelease[i].arr[j](i);
+					aButtonsPress[i].arr[j](i);
 				}
 			}
 		}
