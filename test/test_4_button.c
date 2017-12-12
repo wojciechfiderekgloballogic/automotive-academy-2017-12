@@ -35,12 +35,12 @@ static int press_counter_A = 0;
 static int release_counter_A = 0;
 
 eErr_t B0_vOnPressListenerA(eButton_t eButton) {
-	printf("inkrementuje press_counter_A\n");
+	//printf("inkrementuje press_counter_A\n");
     press_counter_A++;
 }
 
 eErr_t B0_vOnReleaseListenerA(eButton_t eButton) {
-	printf("dekrementuje press_counter_A\n");
+	//printf("dekrementuje press_counter_A\n");
     release_counter_A++;
 }
 
