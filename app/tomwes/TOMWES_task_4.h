@@ -25,7 +25,6 @@ struct sButtonQueue{
 //0            - BUTTON_COUNT-1   : On buttons
 //BUTTON_COUNT - 2*BUTTON_COUNT   : off buttons 
 sButtonQueue asButtonQueue[BUTTON_COUNT*2];
-int iInitialize;
 int aiPrevious[BUTTON_COUNT];
 
 void   TOMWES_vHandleButtons(void);

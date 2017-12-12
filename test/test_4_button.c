@@ -68,6 +68,11 @@ void TEST_4_button(
     eErr_t (*eAddOnPressListener)   (eButton_t eButton, eErr_t (*onPressListener) (eButton_t)),
     eErr_t (*eAddOnReleaseListener) (eButton_t eButton, eErr_t (*onReleaseListener) (eButton_t))
     ) {
+        press_counter_A = 0;
+        release_counter_A = 0;
+        press_counter_B = 0;
+        release_counter_B = 0;
+
         START_TEST(4);
         vInit();
         
@@ -223,34 +228,34 @@ void TEST_4_button(
         
         //---------------------------------------------------------------------------------------------------------------
         // On press and release test
-        // ASSERT( press_counter_A,   4, "Nope !");
-        // ASSERT( release_counter_A, 4, "Nope !");
-        // ASSERT( press_counter_B,   2, "Nope !");
-        // ASSERT( release_counter_B, 2, "Nope !");
+        ASSERT( press_counter_A,   4, "Nope !");
+        ASSERT( release_counter_A, 4, "Nope !");
+        ASSERT( press_counter_B,   2, "Nope !");
+        ASSERT( release_counter_B, 2, "Nope !");
         
-        // PRESS_B1();
-        // ASSERT( press_counter_A,   4, "Nope !");
-        // ASSERT( release_counter_A, 4, "Nope !");
-        // ASSERT( press_counter_B,   3, "Nope !");
-        // ASSERT( release_counter_B, 2, "Nope !");
+        PRESS_B1();
+        ASSERT( press_counter_A,   4, "Nope !");
+        ASSERT( release_counter_A, 4, "Nope !");
+        ASSERT( press_counter_B,   3, "Nope !");
+        ASSERT( release_counter_B, 2, "Nope !");
         
-        // RELEASE_B1();
-        // ASSERT( press_counter_A,   4, "Nope !");
-        // ASSERT( release_counter_A, 4, "Nope !");
-        // ASSERT( press_counter_B,   3, "Nope !");
-        // ASSERT( release_counter_B, 3, "Nope !");
+        RELEASE_B1();
+        ASSERT( press_counter_A,   4, "Nope !");
+        ASSERT( release_counter_A, 4, "Nope !");
+        ASSERT( press_counter_B,   3, "Nope !");
+        ASSERT( release_counter_B, 3, "Nope !");
         
-        // PRESS_B1();
-        // ASSERT( press_counter_A,   4, "Nope !");
-        // ASSERT( release_counter_A, 4, "Nope !");
-        // ASSERT( press_counter_B,   4, "Nope !");
-        // ASSERT( release_counter_B, 3, "Nope !");
+        PRESS_B1();
+        ASSERT( press_counter_A,   4, "Nope !");
+        ASSERT( release_counter_A, 4, "Nope !");
+        ASSERT( press_counter_B,   4, "Nope !");
+        ASSERT( release_counter_B, 3, "Nope !");
         
-        // RELEASE_B1();
-        // ASSERT( press_counter_A,   4, "Nope !");
-        // ASSERT( release_counter_A, 4, "Nope !");
-        // ASSERT( press_counter_B,   4, "Nope !");
-        // ASSERT( release_counter_B, 4, "Nope !");
+        RELEASE_B1();
+        ASSERT( press_counter_A,   4, "Nope !");
+        ASSERT( release_counter_A, 4, "Nope !");
+        ASSERT( press_counter_B,   4, "Nope !");
+        ASSERT( release_counter_B, 4, "Nope !");
         
         
         
@@ -273,50 +278,50 @@ void TEST_4_button(
         
         //---------------------------------------------------------------------------------------------------------------
         // On press and release test
-        // ASSERT( press_counter_A,   4, "Nope !");
-        // ASSERT( release_counter_A, 4, "Nope !");
-        // ASSERT( press_counter_B,   4, "Nope !");
-        // ASSERT( release_counter_B, 4, "Nope !");
+        ASSERT( press_counter_A,   4, "Nope !");
+        ASSERT( release_counter_A, 4, "Nope !");
+        ASSERT( press_counter_B,   4, "Nope !");
+        ASSERT( release_counter_B, 4, "Nope !");
         
-        // PRESS_B2();
-        // ASSERT( press_counter_A,   5, "Nope !");
-        // ASSERT( release_counter_A, 4, "Nope !");
-        // ASSERT( press_counter_B,   4, "Nope !");
-        // ASSERT( release_counter_B, 4, "Nope !");
+        PRESS_B2();
+        ASSERT( press_counter_A,   5, "Nope !");
+        ASSERT( release_counter_A, 4, "Nope !");
+        ASSERT( press_counter_B,   4, "Nope !");
+        ASSERT( release_counter_B, 4, "Nope !");
         
-        // RELEASE_B2();
-        // ASSERT( press_counter_A,   5, "Nope !");
-        // ASSERT( release_counter_A, 5, "Nope !");
-        // ASSERT( press_counter_B,   4, "Nope !");
-        // ASSERT( release_counter_B, 4, "Nope !");
+        RELEASE_B2();
+        ASSERT( press_counter_A,   5, "Nope !");
+        ASSERT( release_counter_A, 5, "Nope !");
+        ASSERT( press_counter_B,   4, "Nope !");
+        ASSERT( release_counter_B, 4, "Nope !");
         
-        // PRESS_B2();
-        // ASSERT( press_counter_A,   6, "Nope !");
-        // ASSERT( release_counter_A, 5, "Nope !");
-        // ASSERT( press_counter_B,   4, "Nope !");
-        // ASSERT( release_counter_B, 4, "Nope !");
+        PRESS_B2();
+        ASSERT( press_counter_A,   6, "Nope !");
+        ASSERT( release_counter_A, 5, "Nope !");
+        ASSERT( press_counter_B,   4, "Nope !");
+        ASSERT( release_counter_B, 4, "Nope !");
         
-        // RELEASE_B2();
-        // ASSERT( press_counter_A,   6, "Nope !");
-        // ASSERT( release_counter_A, 6, "Nope !");
-        // ASSERT( press_counter_B,   4, "Nope !");
-        // ASSERT( release_counter_B, 4, "Nope !");
+        RELEASE_B2();
+        ASSERT( press_counter_A,   6, "Nope !");
+        ASSERT( release_counter_A, 6, "Nope !");
+        ASSERT( press_counter_B,   4, "Nope !");
+        ASSERT( release_counter_B, 4, "Nope !");
         
         
         
         //---------------------------------------------------------------------------------------------------------------
-        // PRESS_B0();
-        // ASSERT( press_counter_A,   7, "Nope !");
-        // ASSERT( release_counter_A, 6, "Nope !");
-        // ASSERT( press_counter_B,   5, "Nope !");
-        // ASSERT( release_counter_B, 4, "Nope !");
+        PRESS_B0();
+        ASSERT( press_counter_A,   7, "Nope !");
+        ASSERT( release_counter_A, 6, "Nope !");
+        ASSERT( press_counter_B,   5, "Nope !");
+        ASSERT( release_counter_B, 4, "Nope !");
         
-        // RELEASE_B0();
-        // ASSERT( press_counter_A,   7, "Nope !");
-        // ASSERT( release_counter_A, 7, "Nope !");
-        // ASSERT( press_counter_B,   5, "Nope !");
-        // ASSERT( release_counter_B, 5, "Nope !");
+        RELEASE_B0();
+        ASSERT( press_counter_A,   7, "Nope !");
+        ASSERT( release_counter_A, 7, "Nope !");
+        ASSERT( press_counter_B,   5, "Nope !");
+        ASSERT( release_counter_B, 5, "Nope !");
         STOP_TEST;
         
-        
+
     }
