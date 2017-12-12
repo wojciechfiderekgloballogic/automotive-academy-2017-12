@@ -32,8 +32,9 @@ buttonListener realloc_buttonListener(void* ptr, int len)
     return a;
 }
 
-eErr_t fnAddListener(buttonListener a, eErr_t (*onPressListener) (eButton_t))
+eErr_t fnAddListener(buttonListener *a, eErr_t (*onPressListener) (eButton_t))
 {
+					
 	eErr_t eReturn=E_OK;
 	if (NULL==onPressListener) 							//check pointer to function
 	{
@@ -42,9 +43,9 @@ eErr_t fnAddListener(buttonListener a, eErr_t (*onPressListener) (eButton_t))
 	else												//check if listener alredy exists ont this button
 	{
 		int i=0;
-		for(i=0;i<a.size;i++)
+		for(i=0;i<a->size;i++)
 		{
-			if(onPressListener==a.arr[i])
+			if(onPressListener==a->arr[i])
 			{
 				eReturn=E_LISTENER_ALREADY_EXISTS;
 			}
@@ -53,13 +54,13 @@ eErr_t fnAddListener(buttonListener a, eErr_t (*onPressListener) (eButton_t))
 	}
 	if(E_OK==eReturn)									//add listener
 	{
-		if(NULL==(a=realloc_buttonListener(a.arr, a.size+1)).arr)
+		if(NULL==(*a=realloc_buttonListener(a->arr, a->size+1)).arr)
 		{
 			eReturn=E_MALLOC;
 		}
 		else
 		{
-			a.arr[a.size-1]=onPressListener;
+			a->arr[a->size-1]=onPressListener;
 		}
 	}
 	
@@ -170,7 +171,7 @@ eErr_t PIOCIE_eAddOnPressListener   (eButton_t eButton, eErr_t (*onPressListener
 	}
 	else 
 	{	
-		eReturn=fnAddListener(aButtonsPress[eButton],onPressListener);
+		eReturn=fnAddListener(&aButtonsPress[eButton],onPressListener);
 	}
 	return eReturn;
 }
@@ -187,7 +188,7 @@ eErr_t PIOCIE_eAddOnReleaseListener (eButton_t eButton, eErr_t (*onPressListener
 	}
 	else 
 	{	
-		eReturn=fnAddListener(aButtonsRelease[eButton],onPressListener);
+		eReturn=fnAddListener(&aButtonsRelease[eButton],onPressListener);
 	}
 	return eReturn;
 }
