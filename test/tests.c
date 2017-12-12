@@ -77,7 +77,7 @@ int main() {
     
     
     printf("\n--------- TASK 4 ---------\n");    
-    TEST_4__BUTTON(WOJFID);
+    //TEST_4__BUTTON(WOJFID);
     //TEST_4__BUTTON(TOMWES);
     //TEST_4__BUTTON(GRZMAK);
     //TEST_4__BUTTON(MARTOR);
