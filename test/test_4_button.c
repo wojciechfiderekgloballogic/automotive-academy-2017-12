@@ -33,11 +33,11 @@ static void iMainStub(int iLoops, void (*vHandleButtons)(void)) {
 static int press_counter_A = 0;
 static int release_counter_A = 0;
 
-static eErr_t B0_vOnPressListenerA(eButton_t eButton) {
+eErr_t B0_vOnPressListenerA(eButton_t eButton) {
     press_counter_A++;
 }
 
-static eErr_t B0_vOnReleaseListenerA(eButton_t eButton) {
+eErr_t B0_vOnReleaseListenerA(eButton_t eButton) {
     release_counter_A++;
 }
 
@@ -46,11 +46,11 @@ static eErr_t B0_vOnReleaseListenerA(eButton_t eButton) {
 static int press_counter_B = 0;
 static int release_counter_B = 0;
 
-static eErr_t B0_vOnPressListenerB(eButton_t eButton) {
+eErr_t B0_vOnPressListenerB(eButton_t eButton) {
     press_counter_B++;
 }
 
-static eErr_t B0_vOnReleaseListenerB(eButton_t eButton) {
+eErr_t B0_vOnReleaseListenerB(eButton_t eButton) {
     release_counter_B++;
 }
 
@@ -63,22 +63,25 @@ static eErr_t B0_vOnReleaseListenerB(eButton_t eButton) {
 
 void TEST_4_button(
     char* module_name,
+    void   (*vInit)                 (void),
     void   (*vHandleButtons)        (void),
     eErr_t (*eAddOnPressListener)   (eButton_t eButton, eErr_t (*onPressListener) (eButton_t)),
     eErr_t (*eAddOnReleaseListener) (eButton_t eButton, eErr_t (*onReleaseListener) (eButton_t))
     ) {
         START_TEST(4);
+        vInit();
         
+        MAIN(10);
+        
+        ASSERT( press_counter_A,   0, "Nope !");
         //===============================================================================================================
         // BUTTON_0 - first handler
-        
         //---------------------------------------------------------------------------------------------------------------
         // Invalid button onPress
         ASSERT( eAddOnPressListener(BUTTON_START-1, B0_vOnPressListenerA), E_INVALID_ARG_1, "Invalid button not handled" );
         
         // Invalid button onPress
-        ASSERT( eAddOnPressListener(BUTTON_COUNT, B0_vOnPressListenerA),   E_INVALID_ARG_1, "Invalid button not handled" );
-        
+        ASSERT( eAddOnPressListener(BUTTON_COUNT, B0_vOnPressListenerA),   E_INVALID_ARG_1, "Invalid button not handled" );        
         
         // Invalid button onRelease
         ASSERT( eAddOnReleaseListener(BUTTON_START-1, B0_vOnReleaseListenerA), E_INVALID_ARG_1, "Invalid button not handled" );
@@ -106,6 +109,8 @@ void TEST_4_button(
         // On press and release test
         ASSERT( press_counter_A,   0, "Nope !");
         ASSERT( release_counter_A, 0, "Nope !");
+        ASSERT( press_counter_B,   0, "Nope !");
+        ASSERT( release_counter_B, 0, "Nope !");
         
         PRESS_B0();
         ASSERT( press_counter_A,   1, "Nope !");
@@ -130,8 +135,6 @@ void TEST_4_button(
         ASSERT( release_counter_A, 2, "Nope !");
         ASSERT( press_counter_B,   0, "Nope !");
         ASSERT( release_counter_B, 0, "Nope !");
-        
-        
         
         
         //===============================================================================================================
