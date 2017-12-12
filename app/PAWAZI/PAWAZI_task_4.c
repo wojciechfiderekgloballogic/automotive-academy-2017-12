@@ -69,19 +69,23 @@ typedef enum eMappedArr{
 
 static eMappedArr_t eMappedArrBtns [BUTTON_COUNT] = {EMB_1,EMB_2,EMB_3};
 
-
 static eErr_t (**eFunPtrArr[BUTTON_COUNT*2])(eButton_t);
-static uint8_t auiStateBtn[BUTTON_COUNT];
-static uint8_t uiEachColumnSize[BUTTON_COUNT*2];
+static eErr_t (**eFunPtrArrTemp)(eButton_t);
+static unsigned int auiStateBtn[BUTTON_COUNT];
+static unsigned int uiEachColumnSize[BUTTON_COUNT*2] = {1,1,1,1,1,1};
 
 
 void  PAWAZI_vInit(void){
 
 	for( int i = 0 ; i < 6 ; i++){
-		if( (eFunPtrArr[i] = malloc( (10) * sizeof (eFunPtrArr))) == NULL){
+		if( (eFunPtrArr[i] = malloc( (1) * sizeof (eFunPtrArr))) == NULL){
 			printf("error - cant allocate 2d array\n");
+		}else{
+			eFunPtrArr[i][0] = NULL;
 		}
-	}		
+	}
+	
+	
 }
 
 
@@ -89,85 +93,30 @@ void  PAWAZI_vInit(void){
 void   PAWAZI_vHandleButtons(void){
 	
 	
-		for(eButton_t i = BUTTON_START ; i < BUTTON_COUNT ; i++){
+	for(eButton_t i = BUTTON_START ; i < BUTTON_COUNT ; i++){
+		
+		if(IO_get(i) && !auiStateBtn[i]){
 			
-			if(IO_get(i) && !auiStateBtn[i]){
-				
-				for(int j = 0 ; j < uiEachColumnSize[i*2] ; j++){
+			for(int j = 0 ; j < uiEachColumnSize[i*2] ; j++){
+				if( eFunPtrArr[i*2][j] !=  NULL){
 					eFunPtrArr[i*2][j](eMappedBtns[i]);
 				}
-				
-				auiStateBtn[i] = 1;
-				
-			}else if(!IO_get(i) && auiStateBtn[i]){
-				
-				for(int j = 0 ; j < uiEachColumnSize[i*2+1] ; j++){
-					eFunPtrArr[i*2+1][j](eMappedBtns[i]);
-				}
-				
-				auiStateBtn[i] = 0;
 			}
 			
+			auiStateBtn[i] = 1;
+			
+		}else if(!IO_get(i) && auiStateBtn[i]){
+			
+			for(int j = 0 ; j < uiEachColumnSize[i*2+1] ; j++){
+				if(eFunPtrArr[i*2+1][j] != NULL){	
+					eFunPtrArr[i*2+1][j](eMappedBtns[i]);
+				}
+			}
+			
+			auiStateBtn[i] = 0;
 		}
-	
-	
-
-	// if(IO_get(IO_PIN_0) && !auiStateBtn[0]){
 		
-		// for(int i = 0 ; i < uiEachColumnSize[0] ; i++){
-			// eFunPtrArr[0][i](BUTTON_1);
-		// }
-		
-		// auiStateBtn[0] = 1;
-		
-	// }else if(!IO_get(IO_PIN_0) && auiStateBtn[0]){
-		
-		// for(int i = 0 ; i < uiEachColumnSize[1] ; i++){
-			// eFunPtrArr[1][i](BUTTON_1);
-		// }
-		
-		// auiStateBtn[0] = 0;
-		
-	// }
-
-	// if(IO_get(IO_PIN_1) && !auiStateBtn[1]){
-		
-		// for(int i = 0 ; i < uiEachColumnSize[2] ; i++){
-			// eFunPtrArr[2][i](BUTTON_2);
-		// }
-		
-		// auiStateBtn[1] = 1;
-		
-	// }else if(!IO_get(IO_PIN_1) && auiStateBtn[1]){
-		
-		// for(int i = 0 ; i < uiEachColumnSize[3] ; i++){
-			// eFunPtrArr[3][i](BUTTON_2);
-		// }
-		
-		// auiStateBtn[1] = 0;
-		
-	// }
-	
-	
-	// if(IO_get(IO_PIN_2) && !auiStateBtn[2]){
-		
-		// for(int i = 0 ; i < uiEachColumnSize[4] ; i++){
-			// eFunPtrArr[4][i](BUTTON_0);
-		// }
-
-		// auiStateBtn[2] = 1;
-		
-	// }else if( !IO_get(IO_PIN_2) && auiStateBtn[2]){
-		
-		// for(int i = 0 ; i < uiEachColumnSize[5] ; i++){
-			// eFunPtrArr[5][i](BUTTON_0);
-		// }
-		
-		// auiStateBtn[2] = 0;
-		
-	// }
-
-	
+	}
 
 }
 
@@ -185,111 +134,31 @@ eErr_t PAWAZI_eAddOnPressListener(eButton_t eButton, eErr_t (*onPressListener) (
 		
 	}else{
 		
-		// case BUTTON_0 : {
-				
-				// for(int i = 0 ; i < uiEachColumnSize[4]; i++){
-					
-					// if(onPressListener == eFunPtrArr[4][i]){
-						// eResult = E_LISTENER_ALREADY_EXISTS;
-						// break;
-					// }						
-					
-				// }
-				
-				// if(eResult != E_LISTENER_ALREADY_EXISTS){
-				
-					// eFunPtrArr[4][uiEachColumnSize[4]] = onPressListener;
-					// uiEachColumnSize[4] ++;
-									
-				// }
-				
-				// break;
-			// }
+		unsigned int uiIndexBtnPress = eMappedArrBtns[eButton];
 		
-		
-			for ( int i = 0 ; i < uiEachColumnSize[eMappedArrBtns[eButton]] ; i++ ){
-				
-				if(onPressListener == eFunPtrArr[eMappedArrBtns[eButton]][i]){
-						eResult = E_LISTENER_ALREADY_EXISTS;
-						break;
-				}
-			}
-
-			if(eResult != E_LISTENER_ALREADY_EXISTS){
-				
-				eFunPtrArr[eMappedArrBtns[eButton]][uiEachColumnSize[eMappedArrBtns[eButton]]] = onPressListener;
-				uiEachColumnSize[eMappedArrBtns[eButton]]++;
-				
-			}				
-			
-
-		
-		
-
-		// switch(eButton){
-			
-			// case BUTTON_1 : {
-				
-				// for(int i = 0 ; i < uiEachColumnSize[0] ; i++){
-					// if(onPressListener == eFunPtrArr[0][i]){
-						// eResult = E_LISTENER_ALREADY_EXISTS;
-						// break;
-					// }
-				// }
-				
-				// if(eResult != E_LISTENER_ALREADY_EXISTS){
-					// eFunPtrArr[0][uiEachColumnSize[0]] = onPressListener;
-					// uiEachColumnSize[0]++;			
-				// }
-				
-				// break;
-			// }
-			
-			// case BUTTON_2 : {
-				
-				// for(int i = 0 ; i < uiEachColumnSize[2] ; i++){
-					// if(onPressListener == eFunPtrArr[2][i]){
-						// eResult = E_LISTENER_ALREADY_EXISTS;
-						// break;
-					// }
-				// }
-				
-				// if(eResult != E_LISTENER_ALREADY_EXISTS){
-					// eFunPtrArr[2][uiEachColumnSize[2]] = onPressListener;
-					// uiEachColumnSize[2]++;
-					
-				// }
-				
-				// break;
 	
-			// }
+		if ( uiEachColumnSize[uiIndexBtnPress] == 2 || (!uiEachColumnSize[uiIndexBtnPress] % 10)){
 			
-			// case BUTTON_0 : {
-				
-				// for(int i = 0 ; i < uiEachColumnSize[4]; i++){
-					
-					// if(onPressListener == eFunPtrArr[4][i]){
-						// eResult = E_LISTENER_ALREADY_EXISTS;
-						// break;
-					// }						
-					
-				// }
-				
-				// if(eResult != E_LISTENER_ALREADY_EXISTS){
-				
-					// eFunPtrArr[4][uiEachColumnSize[4]] = onPressListener;
-					// uiEachColumnSize[4] ++;
-									
-				// }
-				
-				// break;
-			// }
+			eFunPtrArrTemp = realloc(eFunPtrArr[uiIndexBtnPress], sizeof(eFunPtrArr) * 10);
+			eFunPtrArr[uiIndexBtnPress] = eFunPtrArrTemp;
 			
-			// default:
-				// break;
+		}
+	
+
+		for ( int i = 0 ; i < uiEachColumnSize[uiIndexBtnPress] ; i++ ){
 			
+			if(onPressListener == eFunPtrArr[uiIndexBtnPress][i]){
+					eResult = E_LISTENER_ALREADY_EXISTS;
+					break;
+			}
+		}
+
+		if(eResult != E_LISTENER_ALREADY_EXISTS){
 			
-		// }
+			eFunPtrArr[uiIndexBtnPress][uiEachColumnSize[uiIndexBtnPress]] = onPressListener;
+			uiEachColumnSize[uiIndexBtnPress]++;
+			
+		}				
 	}
 		
 	return eResult;
@@ -310,24 +179,15 @@ eErr_t PAWAZI_eAddOnReleaseListener(eButton_t eButton, eErr_t (*onReleaseListene
 		eResult = E_INVALID_ARG_2;
 		
 	}else{
-		
-		// for ( int i = 0 ; i < uiEachColumnSize[eMappedArrBtns[eButton]] ; i++ ){
-				
-				// if(onPressListener == eFunPtrArr[eMappedArrBtns[eButton]][i]){
-						// eResult = E_LISTENER_ALREADY_EXISTS;
-						// break;
-				// }
-			// }
 
-			// if(eResult != E_LISTENER_ALREADY_EXISTS){
-				
-				// eFunPtrArr[eMappedArrBtns[eButton]][uiEachColumnSize[eMappedArrBtns[eButton]]] = onPressListener;
-				// uiEachColumnSize[eMappedArrBtns[eButton]]++;
-				
-			// }				
-		
-		//
 		unsigned int uiIndexBtnRel = eMappedArrBtns[eButton]+1;
+		
+		if ( uiEachColumnSize[uiIndexBtnRel] == 2 || (!uiEachColumnSize[uiIndexBtnRel] % 10)){
+		
+			eFunPtrArrTemp = realloc(eFunPtrArr[uiIndexBtnRel], sizeof(eFunPtrArr) * 10);
+			eFunPtrArr[uiIndexBtnRel] = eFunPtrArrTemp;
+		
+		}
 		
 	
 		for ( int i = 0 ; i < uiEachColumnSize[uiIndexBtnRel] ; i++ ){
@@ -345,64 +205,6 @@ eErr_t PAWAZI_eAddOnReleaseListener(eButton_t eButton, eErr_t (*onReleaseListene
 			
 		}			
 	
-		// switch(eButton){
-			
-			// case BUTTON_1 : {
-				
-				// for(int i = 0 ; i < uiEachColumnSize[1] ; i++){
-					// if(onReleaseListener == eFunPtrArr[1][i]){
-						// eResult = E_LISTENER_ALREADY_EXISTS;
-						// break;
-					// }
-				// }
-				
-				// if(eResult != E_LISTENER_ALREADY_EXISTS){
-					// eFunPtrArr[1][uiEachColumnSize[1]] = onReleaseListener;
-					// uiEachColumnSize[1]++;		
-				// }
-				
-				// break;
-			// }
-			
-			// case BUTTON_2 : {
-				
-				// for(int i = 0 ; i < uiEachColumnSize[3] ; i++){
-					// if(onReleaseListener == eFunPtrArr[3][i]){
-						// eResult = E_LISTENER_ALREADY_EXISTS;
-						// break;
-					// }
-				// }
-				
-				// if(eResult != E_LISTENER_ALREADY_EXISTS){
-					// eFunPtrArr[3][uiEachColumnSize[3]] = onReleaseListener;
-					// uiEachColumnSize[3]++;		
-				// }
-				
-				// break;
-			// }
-			
-			// case BUTTON_0 : {
-			
-				
-				// for(int i = 0 ; i < uiEachColumnSize[5]; i++){		
-					// if(onReleaseListener == eFunPtrArr[5][i]){			
-						// eResult = E_LISTENER_ALREADY_EXISTS;
-						// break;
-					// }						
-				// }
-				
-				// if(eResult != E_LISTENER_ALREADY_EXISTS){				
-					// eFunPtrArr[5][uiEachColumnSize[5]] = onReleaseListener;
-					// uiEachColumnSize[5]++;		
-				// }
-				
-				// break;
-			// }
-			
-			// default:
-				// break;		
-			
-		// }
 	}
 	
 	
