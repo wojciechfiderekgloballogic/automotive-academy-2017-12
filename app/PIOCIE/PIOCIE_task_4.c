@@ -100,8 +100,19 @@ int buttonState(eButton_t eButton)
 }
 
 
+void PIOCIE_vInit(void)
+{			
+	int i=0;
+	for(i=0;i<BUTTON_COUNT;i++)															//allocate adresses for all buttons
+	{
+		aButtonsPress[i]=alloc_buttonListener(0);						//Press
+		aButtonsRelease[i]=alloc_buttonListener(0);						//Release
+		buttonStatus[i]=buttonState(i);													//Read button status
+	}
+}
 
-eErr_t PIOCIE_eInitButtons(void)
+/*
+eErr_t PIOCIE_vInit(void)
 {			
 	eErr_t eReturn=E_OK;
 	int i=0;
@@ -119,7 +130,7 @@ eErr_t PIOCIE_eInitButtons(void)
 	}
 	return eReturn;
 }
-
+*/
 void PIOCIE_vHandleButtons (void){															//Executes button functions
 	int i=0;
 	for(i=0;i<BUTTON_COUNT;i++)

@@ -15,7 +15,8 @@
 /* every public function in your module should start with "MODULENAME_" prefix */
 /* you should change buttonState function if added buttons - map proper pins to propper buttons*/
 
-eErr_t PIOCIE_eInitButtons(void);
+//eErr_t PIOCIE_vInit(void);
+void   PIOCIE_vInit                 (void);
 void   PIOCIE_vHandleButtons        (void);
 eErr_t PIOCIE_eAddOnPressListener   (eButton_t eButton, eErr_t (*onPressListener) (eButton_t));
 eErr_t PIOCIE_eAddOnReleaseListener (eButton_t eButton, eErr_t (*onPressListener) (eButton_t));
