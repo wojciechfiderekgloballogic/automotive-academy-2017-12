@@ -12,11 +12,11 @@
 #include "./tests.h"
 
 
-#define TEST_4__BUTTON(MODULE_PREFIX) TEST_3_button( \
+#define TEST_4__BUTTON(MODULE_PREFIX) TEST_4_button( \
     #MODULE_PREFIX,                         \
     MODULE_PREFIX##_vHandleButtons,         \
     MODULE_PREFIX##_eAddOnPressListener,    \
-    MODULE_PREFIX##_eAddOnReleaseListener,  \
+    MODULE_PREFIX##_eAddOnReleaseListener  \
     )
 
 
@@ -24,7 +24,7 @@ void TEST_4_button(
     char* module_name,
     void   (*vHandleButtons)        (void),
     eErr_t (*eAddOnPressListener)   (eButton_t eButton, eErr_t (*onPressListener) (eButton_t)),
-    eErr_t (*eAddOnReleaseListener) (eButton_t eButton, eErr_t (*onPressListener) (eButton_t))
+    eErr_t (*eAddOnReleaseListener) (eButton_t eButton, eErr_t (*onReleaseListener) (eButton_t))
     );
 
     

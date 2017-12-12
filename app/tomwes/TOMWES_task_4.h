@@ -28,9 +28,9 @@ sButtonQueue asButtonQueue[BUTTON_COUNT*2];
 int iInitialize;
 int aiPrevious[BUTTON_COUNT];
 
-void   vHandleButtons(void);
-eErr_t eAddOnPressListener(eButton_t eButton, eErr_t (*onPressListener) (eButton_t));
-eErr_t eAddOnReleaseListener(eButton_t eButton, eErr_t (*onReleaseListener) (eButton_t));
-void vInitializeStructs();
+void   TOMWES_vHandleButtons(void);
+eErr_t TOMWES_eAddOnPressListener(eButton_t eButton, eErr_t (*onPressListener) (eButton_t));
+eErr_t TOMWES_eAddOnReleaseListener(eButton_t eButton, eErr_t (*onReleaseListener) (eButton_t));
+void TOMWES_vInit();
 
 #endif
