@@ -6,9 +6,10 @@ Your task is to create buttons handlers.
 -------------------------------------------------
 
 Implement 3 functions:
-1)    void   (*vHandleButtons)        (void),
-2)    eErr_t (*eAddOnPressListener)   (eButton_t eButton, eErr_t (*onPressListener) (eButton_t)),
-3)    eErr_t (*eAddOnReleaseListener) (eButton_t eButton, eErr_t (*onPressListener) (eButton_t))
+1)    void   vHandleButtons        (void)
+2)    eErr_t eAddOnPressListener   (eButton_t eButton, eErr_t (*onPressListener)   (eButton_t))
+3)    eErr_t eAddOnReleaseListener (eButton_t eButton, eErr_t (*onReleaseListener) (eButton_t))
+4)    void   vInit                 (void)
 
 
 -------------------------------------------------
@@ -32,3 +33,5 @@ There should be possibility to add multiple listeners for every button.
 Adding the same listener to the one button should not be possible (E_LISTENER_ALREADY_EXISTS error code should be returned).
 
 -------------------------------------------------
+
+Function vInit - you have guarantee that it will be called once on device startup

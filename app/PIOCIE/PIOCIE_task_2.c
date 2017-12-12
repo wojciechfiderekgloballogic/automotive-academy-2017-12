@@ -29,7 +29,7 @@ eErr_t PIOCIE_setLampBit( eLamp_t bit, int* reg)
 		result=E_OK;
 	}
 	return result;
-};
+}
 eErr_t PIOCIE_clearLampBit(     eLamp_t bit, int* reg    )
 {
 	eErr_t result;
@@ -47,7 +47,7 @@ eErr_t PIOCIE_clearLampBit(     eLamp_t bit, int* reg    )
 		result=E_OK;
 	}
 	return result;
-};
+}
 eErr_t PIOCIE_invertLampBit(    eLamp_t bit, int* reg    )
 {
 	eErr_t result;
@@ -65,7 +65,7 @@ eErr_t PIOCIE_invertLampBit(    eLamp_t bit, int* reg    )
 		result=E_OK;
 	}
 	return result;
-};
+}
 eErr_t PIOCIE_getLampState(       eLamp_t bit, int reg, eLampState_t* state)
 {
 	eErr_t result;
@@ -90,4 +90,4 @@ eErr_t PIOCIE_getLampState(       eLamp_t bit, int reg, eLampState_t* state)
 		result=E_OK;
 	}
 	return result;
-};
+}
