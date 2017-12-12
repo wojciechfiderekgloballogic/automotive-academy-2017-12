@@ -45,7 +45,7 @@ eErr_t fnAddListener(sButtonListener *sA, eErr_t (*onPressListener) (eButton_t))
 	}
 	else												//check if listener alredy exists ont this button
 	{
-		int i=0;
+		int i;
 		for(i=0;i<sA->iSize;i++)
 		{
 			if(onPressListener==sA->eArr[i])
@@ -99,7 +99,7 @@ int iButtonState(eButton_t eButton)
 
 void PIOCIE_vInit(void)
 {			
-	int i=0;
+	int i;
 	for(i=0;i<BUTTON_COUNT;i++)															//allocate adresses for all buttons
 	{
 		aButtonsPress[i]=alloc_sButtonListener(0);						//Press
@@ -112,7 +112,7 @@ void PIOCIE_vInit(void)
 eErr_t PIOCIE_vInit(void)
 {			
 	eErr_t eReturn=E_OK;
-	int i=0;
+	int i;
 	for(i=0;i<BUTTON_COUNT;i++)															//allocate adresses for all buttons
 	{
 		if(NULL==(aButtonsPress[i]=alloc_sButtonListener(0)).eArr)						//Press
@@ -129,7 +129,7 @@ eErr_t PIOCIE_vInit(void)
 }
 */
 void PIOCIE_vHandleButtons (void){															//Executes button functions
-	int i=0;
+	int i;
 	for(i=0;i<BUTTON_COUNT;i++)
 	{
 		if(iaButtonStatus[i]!=iButtonState(i))													//button status changed
@@ -137,7 +137,7 @@ void PIOCIE_vHandleButtons (void){															//Executes button functions
 			iaButtonStatus[i]=iButtonState(i);
 			if(0==iaButtonStatus[i])														//button release (zmienic too 0 na zmienna jakas)
 			{
-				int j=0;
+				int j;
 				for(j=0;j<aButtonsRelease[i].iSize;j++)									//execute all functions attatched to button i
 				{
 					aButtonsRelease[i].eArr[j](i);
@@ -145,7 +145,7 @@ void PIOCIE_vHandleButtons (void){															//Executes button functions
 			}
 			else if(1==iaButtonStatus[i])													//button press
 			{
-				int j=0;
+				int j;
 				for(j=0;j<aButtonsPress[i].iSize;j++)									//execute all functions attatched to button i
 				{
 					aButtonsPress[i].eArr[j](i);
