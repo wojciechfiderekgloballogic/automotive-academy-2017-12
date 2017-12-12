@@ -16,10 +16,11 @@
  #include "../common/COMMON_interface.h"
  #include "../IO/IO_interface.h"
  
-
-void   (*vHandleButtons)        (void);
-eErr_t (*eAddOnPressListener)   (eButton_t eButton, eErr_t (*onPressListener) (eButton_t));
-eErr_t (*eAddOnReleaseListener) (eButton_t eButton, eErr_t (*onPressListener) (eButton_t));
+void   vHandleButton(eButton_t eButton);
+void   MICKAL_vHandleButtons(void);
+void   MICKAL_vInit();
+eErr_t MICKAL_eAddOnPressListener(eButton_t eButton, eErr_t (*onPressListener) (eButton_t));
+eErr_t MICKAL_eAddOnReleaseListener(eButton_t eButton, eErr_t (*onPressListener) (eButton_t));
 
 
 #endif
