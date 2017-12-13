@@ -23,34 +23,29 @@ static int iMapButtonToPin(eButton_t eButton)
 
 typedef eErr_t (*pListener_func)(eButton_t);
 
- struct sListeners{
-	int icounter : 16;
-	int iarr_size : 16;
-	pListener_func* afListeners;
-	
-} sListener_default = {0, 0, 0};
+ 
+int aiOnPressCount[BUTTON_COUNT];
+int aiOnPressArraySize[BUTTON_COUNT];
+pListener_func* apOnPressListeners[BUTTON_COUNT];
 
-typedef struct sButtonListeners{
-	struct sListeners sOnPress;
-	struct sListeners sOnRelease;
-	
-} sButtonListeners_t;
 
-sButtonListeners_t sListener[BUTTON_COUNT];
+int aiOnReleaseCount[BUTTON_COUNT];
+int aiOnReleaseArraySize[BUTTON_COUNT];
+pListener_func* apOnReleaseListeners[BUTTON_COUNT];
 
 void callOnPressButtons(eButton_t eButton)
 {
-	for (int i=0; i < sListener[eButton].sOnPress.icounter;++i)
+	for (int i=0; i < aiOnPressCount[eButton];++i)
 	{
-		sListener[eButton].sOnPress.afListeners[i](eButton);
+		apOnPressListeners[eButton][i](eButton);
 	}		
 }
 
 void callOnReleaseButtons(eButton_t eButton)
 {
-	for (int i=0; i < sListener[eButton].sOnRelease.icounter;++i)
+	for (int i=0; i < aiOnReleaseCount[eButton];++i)
 	{
-		sListener[eButton].sOnRelease.afListeners[i](eButton);
+		apOnReleaseListeners[eButton][i](eButton);		
 	}		
 }
 
@@ -58,8 +53,8 @@ void GRZMAK_vInit()
 {
 	for(eButton_t i = BUTTON_START ;i< BUTTON_COUNT;++i)
 	{
-		sListener[i].sOnPress = sListener_default;
-		sListener[i].sOnRelease = sListener_default;
+		apOnPressListeners[i] = malloc(sizeof(pListener_func*));
+		apOnReleaseListeners[i] = malloc(sizeof(pListener_func*));
 	}
 
 }
@@ -95,13 +90,13 @@ eErr_t GRZMAK_eAddOnPressListener(eButton_t eButton, eErr_t (*onPressListener) (
 	eErr_t eResult = E_OK;
 	if(eButton >= BUTTON_START && eButton < BUTTON_COUNT)
 	{
-		int iCount = sListener[eButton].sOnPress.icounter;
-		int iArr_size = sListener[eButton].sOnPress.iarr_size;
+		int iCount = aiOnPressCount[eButton];
+		int iArr_size = aiOnPressArraySize[eButton];
 		int iNewSize = 0;
 		/* 	Check if function in listener */
 		for(int i = 0; i < iCount; ++i)
 		{
-			if(sListener[eButton].sOnPress.afListeners[i] == onPressListener)
+			if(apOnPressListeners[eButton][i] == onPressListener)
 			{	
 				eResult = E_LISTENER_ALREADY_EXISTS;
 				break;
@@ -112,20 +107,20 @@ eErr_t GRZMAK_eAddOnPressListener(eButton_t eButton, eErr_t (*onPressListener) (
 			/* check if enough space */
 			if(iCount == iArr_size)
 			{
-				sListener[eButton].sOnPress.iarr_size = sListener[eButton].sOnPress.iarr_size + 1;
-				iNewSize = sListener[eButton].sOnPress.iarr_size;
-				sListener[eButton].sOnPress.afListeners = realloc(sListener[eButton].sOnPress.afListeners,sizeof(sListener[eButton].sOnPress.afListeners) * iNewSize);
+				aiOnPressArraySize[eButton] = aiOnPressArraySize[eButton] + 1;
+				iNewSize = aiOnPressArraySize[eButton];
+				apOnPressListeners[eButton] = realloc(apOnPressListeners[eButton],sizeof(apOnPressListeners[eButton]) * iNewSize);
 		
 			}
-			if(sListener[eButton].sOnPress.afListeners == 0)
+			if(apOnPressListeners[eButton] == 0)
 			{	
 				eResult = E_MALLOC;
 			}
 			else
 			{
-				sListener[eButton].sOnPress.icounter++;
-				iCount = sListener[eButton].sOnPress.icounter;
-				sListener[eButton].sOnPress.afListeners[iCount - 1] = onPressListener;
+				aiOnPressCount[eButton] = aiOnPressCount[eButton] + 1;
+				iCount = aiOnPressCount[eButton];
+				apOnPressListeners[eButton][iCount - 1] = onPressListener;
 			}
 		
 		}
@@ -143,13 +138,13 @@ eErr_t GRZMAK_eAddOnReleaseListener(eButton_t eButton, eErr_t (*onReleaseListene
 	eErr_t eResult = E_OK;
 	if(eButton >= BUTTON_START && eButton < BUTTON_COUNT)
 	{
-		int iCount = sListener[eButton].sOnRelease.icounter;
-		int iArr_size = sListener[eButton].sOnRelease.iarr_size;
+		int iCount = aiOnReleaseCount[eButton];
+		int iArr_size = aiOnReleaseArraySize[eButton];
 		int iNewSize = 0;
 		/* 	Check if function in listener */
 		for(int i = 0; i < iCount; ++i)
 		{
-			if(sListener[eButton].sOnRelease.afListeners[i] == onReleaseListener)
+			if(apOnReleaseListeners[eButton][i] == onReleaseListener)
 			{	
 				eResult = E_LISTENER_ALREADY_EXISTS;
 				break;
@@ -160,20 +155,20 @@ eErr_t GRZMAK_eAddOnReleaseListener(eButton_t eButton, eErr_t (*onReleaseListene
 			/* check if enough space */
 			if(iCount == iArr_size)
 			{
-				sListener[eButton].sOnRelease.iarr_size++;
-				iNewSize = sListener[eButton].sOnRelease.iarr_size;
-				sListener[eButton].sOnRelease.afListeners = realloc(sListener[eButton].sOnRelease.afListeners,sizeof(sListener[eButton].sOnRelease.afListeners)* iNewSize);
+				aiOnReleaseArraySize[eButton] = aiOnReleaseArraySize[eButton] + 1;
+				iNewSize = aiOnReleaseArraySize[eButton];
+				apOnReleaseListeners[eButton] = realloc(apOnReleaseListeners[eButton],sizeof(apOnReleaseListeners[eButton]) * iNewSize);
 		
 			}
-			if(sListener[eButton].sOnRelease.afListeners == 0)
+			if(apOnReleaseListeners[eButton] == 0)
 			{	
 				eResult = E_MALLOC;
 			}
 			else
 			{
-				sListener[eButton].sOnRelease.icounter++;
-				iCount = sListener[eButton].sOnRelease.icounter;
-				sListener[eButton].sOnRelease.afListeners[iCount - 1] = onReleaseListener;
+				aiOnReleaseCount[eButton] = aiOnReleaseCount[eButton] + 1;
+				iCount = aiOnReleaseCount[eButton];
+				apOnReleaseListeners[eButton][iCount - 1] = onReleaseListener;
 			}
 		
 		}
