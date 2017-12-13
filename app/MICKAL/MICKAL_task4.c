@@ -14,47 +14,41 @@
  
 typedef eErr_t (*peFunction) (eButton_t);
 
-struct sListeners {
-    int iCount;
-    int iArraySize;
-    peFunction* afListeners;
-} sListeners_t_defaulte = {0, 0, 0};
+//Table 
+int aiOnPressCount[BUTTON_COUNT]={0};
+int aiOnPressArraySize[BUTTON_COUNT]={0};
+peFunction* apOnPressListeners[BUTTON_COUNT]={0};
 
-typedef struct sListeners sListeners_t;
-
-typedef struct sButtonListeners {
-    sListeners_t sOnPress;
-    sListeners_t sOnRelease;
-} sButtonListeners_t;
-
-static sButtonListeners_t asListeners[BUTTON_COUNT];
+int aiOnReleaseCount[BUTTON_COUNT]={0};
+int aiOnReleaseArraySize[BUTTON_COUNT]={0};
+peFunction* apOnReleaseListeners[BUTTON_COUNT]={0};
+//end 
 
 
 static void onButtonPress(eButton_t eButton) {
     int i = 0;
-    int iCount = asListeners[eButton].sOnPress.iCount;
+    int iCount = aiOnPressCount[eButton];
     
     for(i=0; i<iCount; i++) {
-        asListeners[eButton].sOnPress.afListeners[i](eButton);
+        apOnPressListeners[eButton][i](eButton);
     }
 }
 
 static void onButtonRelease(eButton_t eButton) {
     int i = 0;
-    int iCount = asListeners[eButton].sOnRelease.iCount;
+    int iCount = aiOnReleaseCount[eButton];
     
     for(i=0; i<iCount; i++) {
-        asListeners[eButton].sOnRelease.afListeners[i](eButton);
+        apOnReleaseListeners[eButton][i](eButton);
     }
 }
 
 void MICKAL_vInit() {
-    eButton_t eButton = BUTTON_START;
-    
-    for(eButton=BUTTON_START; eButton<BUTTON_COUNT; eButton++) {
-        asListeners[eButton].sOnPress = sListeners_t_defaulte;
-        asListeners[eButton].sOnRelease = sListeners_t_defaulte;
-    }
+	for (eButton_t i = BUTTON_START;i<BUTTON_COUNT;++i)
+	{
+		apOnPressListeners[i] = malloc(sizeof(peFunction*));
+		apOnReleaseListeners[i] = malloc(sizeof(peFunction*));
+	}
 }
 
 static int aiPrevPinStates[BUTTON_COUNT] = {
@@ -126,13 +120,13 @@ eErr_t MICKAL_eAddOnPressListener(eButton_t eButton, eErr_t (*onPressListener) (
 	
 	if(eButton>=BUTTON_START && eButton < BUTTON_COUNT)
 	{
-		int iCount = asListeners[eButton].sOnPress.iCount;
-		int iArraySize = asListeners[eButton].sOnPress.iArraySize;
+		int iCount = aiOnPressCount[eButton];
+		int iArraySize = aiOnPressArraySize[eButton];
 		int iNewSize = 0;
 		
 		for(int i = 0;i<iCount;++i)
 		{
-			if(asListeners[eButton].sOnPress.afListeners[i] == onPressListener)
+			if(apOnPressListeners[eButton][i] == onPressListener)
 			{
 				eResult = E_LISTENER_ALREADY_EXISTS;
 				break;
@@ -143,23 +137,23 @@ eErr_t MICKAL_eAddOnPressListener(eButton_t eButton, eErr_t (*onPressListener) (
 		{
 			if(iCount == iArraySize)
 			{
-				asListeners[eButton].sOnPress.iArraySize++;
-				iNewSize = asListeners[eButton].sOnPress.iArraySize;
+				aiOnPressArraySize[eButton]++;
+				iNewSize = aiOnPressArraySize[eButton];
 				
-				asListeners[eButton].sOnPress.afListeners = realloc(
-				asListeners[eButton].sOnPress.afListeners,
-				sizeof(asListeners[eButton].sOnPress.afListeners)* iNewSize);
+				apOnPressListeners[eButton] = realloc(
+				apOnPressListeners[eButton],
+				sizeof(apOnPressListeners[eButton])* iNewSize);
 			}
 			
-			if(asListeners[eButton].sOnPress.afListeners == NULL)
+			if(apOnPressListeners[eButton] == NULL)
 			{
 				eResult = E_MALLOC;
 			}
 			else
 			{
-				asListeners[eButton].sOnPress.iCount++;
-				iCount = asListeners[eButton].sOnPress.iCount;
-				asListeners[eButton].sOnPress.afListeners[iCount-1] = onPressListener;
+				aiOnPressCount[eButton]++;
+				iCount = aiOnPressCount[eButton];
+				apOnPressListeners[eButton][iCount-1] = onPressListener;
 			}
 		}
 		
@@ -177,13 +171,13 @@ eErr_t MICKAL_eAddOnReleaseListener(eButton_t eButton, eErr_t (*onReleaseListene
 	
 	if(eButton>=BUTTON_START && eButton < BUTTON_COUNT)
 	{
-		int iCount = asListeners[eButton].sOnRelease.iCount;
-		int iArraySize = asListeners[eButton].sOnRelease.iArraySize;
+		int iCount = aiOnReleaseCount[eButton];
+		int iArraySize = aiOnReleaseArraySize[eButton];
 		int iNewSize = 0;
 		
 		for(int i = 0;i<iCount;++i)
 		{
-			if(asListeners[eButton].sOnRelease.afListeners[i] == onReleaseListener)
+			if(apOnReleaseListeners[eButton][i] == onReleaseListener)
 			{
 				eResult = E_LISTENER_ALREADY_EXISTS;
 				break;
@@ -194,23 +188,23 @@ eErr_t MICKAL_eAddOnReleaseListener(eButton_t eButton, eErr_t (*onReleaseListene
 		{
 			if(iCount == iArraySize)
 			{
-				asListeners[eButton].sOnRelease.iArraySize++;
-				iNewSize = asListeners[eButton].sOnRelease.iArraySize;
+				aiOnReleaseArraySize[eButton]++;
+				iNewSize = aiOnReleaseArraySize[eButton];
 				
-				asListeners[eButton].sOnRelease.afListeners = realloc(
-				asListeners[eButton].sOnRelease.afListeners,
-				sizeof(asListeners[eButton].sOnRelease.afListeners)* iNewSize);
+				apOnReleaseListeners[eButton] = realloc(
+				apOnReleaseListeners[eButton],
+				sizeof(apOnReleaseListeners[eButton])* iNewSize);
 			}
 			
-			if(asListeners[eButton].sOnRelease.afListeners == NULL)
+			if(apOnReleaseListeners[eButton] == NULL)
 			{
 				eResult = E_MALLOC;
 			}
 			else
 			{
-				asListeners[eButton].sOnRelease.iCount++;
-				iCount = asListeners[eButton].sOnRelease.iCount;
-				asListeners[eButton].sOnRelease.afListeners[iCount-1] = onReleaseListener;
+				aiOnReleaseCount[eButton]++;
+				iCount = aiOnReleaseCount[eButton];
+				apOnReleaseListeners[eButton][iCount-1] = onReleaseListener;
 			}
 		}
 		
@@ -221,6 +215,5 @@ eErr_t MICKAL_eAddOnReleaseListener(eButton_t eButton, eErr_t (*onReleaseListene
 		return eResult;
 	
 }
- 
  
  
