@@ -11,42 +11,12 @@
 #include "PAWAZI_task_4.h"
 
 /*
-
-	albo lepiej do struktury????
+	array that holds pointers for handlers (press and release)
 	
-	struct stru{
-		
-		eErr_t (*)
-		
-		
-	}
-	
-	[ B1 onPress ] [ B1 onReleased ] [ B2 onPress ] [ B2 onRelease] [ B3 onPresse] [ B3 onRelease ]
-		onPress			onPress				onPress			onPress
-		.					.
-		.					.		
-		.					.
-		.					.	
-		.					.
-		.					.		
-		.					.
-		.					.	
-
-
-		
-		przechowywac stan poprzedni przycisku.....
-		
-		
-		
-		prev = current
-		
-		
-		
-		patent
-		
-		
-
-
+	[ B1 onPress ] [ B1 onReleased ] [ B2 onPress ] [ B2 onRelease] [ B0 onPresse] [ B0 onRelease ] ...
+	  OnPress            OnRelease          OnPress       OnRelease     	OnPress       OnRelease
+		  |				   |				|				|			   |				|
+		 \ / 			  \ /			   \ /			   \ /	          \ /			   \ /	
 */
 
 /*
@@ -85,10 +55,7 @@ void  PAWAZI_vInit(void){
 		}
 	}
 	
-	
 }
-
-
 
 void   PAWAZI_vHandleButtons(void){
 	
@@ -193,8 +160,8 @@ eErr_t PAWAZI_eAddOnReleaseListener(eButton_t eButton, eErr_t (*onReleaseListene
 		for ( int i = 0 ; i < uiEachColumnSize[uiIndexBtnRel] ; i++ ){
 			
 			if(onReleaseListener == eFunPtrArr[uiIndexBtnRel][i]){
-					eResult = E_LISTENER_ALREADY_EXISTS;
-					break;
+				eResult = E_LISTENER_ALREADY_EXISTS;
+				break;
 			}
 		}
 

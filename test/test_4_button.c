@@ -9,7 +9,6 @@
 
 #define MAIN(COUNT) iMainStub(COUNT, vHandleButtons)
 static void iMainStub(int iLoops, void (*vHandleButtons)(void)) {
-
     while(iLoops > 0) {
         vHandleButtons();
         iLoops--;
@@ -35,12 +34,10 @@ static int press_counter_A = 0;
 static int release_counter_A = 0;
 
 eErr_t B0_vOnPressListenerA(eButton_t eButton) {
-	//printf("inkrementuje press_counter_A\n");
     press_counter_A++;
 }
 
 eErr_t B0_vOnReleaseListenerA(eButton_t eButton) {
-	//printf("dekrementuje press_counter_A\n");
     release_counter_A++;
 }
 
@@ -71,8 +68,6 @@ void TEST_4_button(
     eErr_t (*eAddOnPressListener)   (eButton_t eButton, eErr_t (*onPressListener) (eButton_t)),
     eErr_t (*eAddOnReleaseListener) (eButton_t eButton, eErr_t (*onPressListener) (eButton_t))
     ) {
-		
-		printf("start...\n");
         START_TEST(4);
         vInit();
         
@@ -142,41 +137,41 @@ void TEST_4_button(
         ASSERT( release_counter_B, 0, "Nope !");
         
         
-        // //===============================================================================================================
-        // // BUTTON_0 - second handler
+        //===============================================================================================================
+        // BUTTON_0 - second handler
         
-        // //---------------------------------------------------------------------------------------------------------------
-        // // Invalid button onPress
+        //---------------------------------------------------------------------------------------------------------------
+        // Invalid button onPress
         ASSERT( eAddOnPressListener(BUTTON_START-1, B0_vOnPressListenerB), E_INVALID_ARG_1, "Invalid button not handled" );
         
-        // // Invalid button onPress
+        // Invalid button onPress
         ASSERT( eAddOnPressListener(BUTTON_COUNT, B0_vOnPressListenerB),   E_INVALID_ARG_1, "Invalid button not handled" );
         
         
-        // // Invalid button onRelease
+        // Invalid button onRelease
         ASSERT( eAddOnReleaseListener(BUTTON_START-1, B0_vOnReleaseListenerB), E_INVALID_ARG_1, "Invalid button not handled" );
         
-        // // Invalid button onRelease
+        // Invalid button onRelease
         ASSERT( eAddOnReleaseListener(BUTTON_COUNT, B0_vOnReleaseListenerB),   E_INVALID_ARG_1, "Invalid button not handled" );
         
         
         
-        // //---------------------------------------------------------------------------------------------------------------
-        // // Ok
+        //---------------------------------------------------------------------------------------------------------------
+        // Ok
         ASSERT( eAddOnPressListener(BUTTON_0, B0_vOnPressListenerB), E_OK, "Invalid button" );
-        // // Ok
+        // Ok
         ASSERT( eAddOnReleaseListener(BUTTON_0, B0_vOnReleaseListenerB), E_OK, "Invalid button" );
         
         
-        // //---------------------------------------------------------------------------------------------------------------
-        // // Already exists
+        //---------------------------------------------------------------------------------------------------------------
+        // Already exists
         ASSERT( eAddOnPressListener(BUTTON_0, B0_vOnPressListenerB),   E_LISTENER_ALREADY_EXISTS, "Do not allow doubled listeners" );
-        // // Already exists
+        // Already exists
         ASSERT( eAddOnReleaseListener(BUTTON_0, B0_vOnReleaseListenerB), E_LISTENER_ALREADY_EXISTS, "Do not allow doubled listeners" );
         
         
-        // //---------------------------------------------------------------------------------------------------------------
-        // // On press and release test
+        //---------------------------------------------------------------------------------------------------------------
+        // On press and release test
         ASSERT( press_counter_A,   2, "Nope !");
         ASSERT( release_counter_A, 2, "Nope !");
         ASSERT( press_counter_B,   0, "Nope !");
@@ -208,30 +203,30 @@ void TEST_4_button(
         
         
         
-        // //===============================================================================================================
-        // // BUTTON_1
+        //===============================================================================================================
+        // BUTTON_1
         
         
-        // //---------------------------------------------------------------------------------------------------------------
-        // // Ok
-         ASSERT( eAddOnPressListener(BUTTON_1, B0_vOnPressListenerB), E_OK, "Should be E_OK" );
-        // // Ok
-         ASSERT( eAddOnReleaseListener(BUTTON_1, B0_vOnReleaseListenerB), E_OK, "Should be E_OK" );
+        //---------------------------------------------------------------------------------------------------------------
+        // Ok
+        ASSERT( eAddOnPressListener(BUTTON_1, B0_vOnPressListenerB), E_OK, "Should be E_OK" );
+        // Ok
+        ASSERT( eAddOnReleaseListener(BUTTON_1, B0_vOnReleaseListenerB), E_OK, "Should be E_OK" );
         
         
-        // //---------------------------------------------------------------------------------------------------------------
-        // // Already exists
-         ASSERT( eAddOnPressListener(BUTTON_1, B0_vOnPressListenerB),   E_LISTENER_ALREADY_EXISTS, "Do not allow doubled listeners" );
-        // // Already exists
-         ASSERT( eAddOnReleaseListener(BUTTON_1, B0_vOnReleaseListenerB), E_LISTENER_ALREADY_EXISTS, "Do not allow doubled listeners" );
+        //---------------------------------------------------------------------------------------------------------------
+        // Already exists
+        ASSERT( eAddOnPressListener(BUTTON_1, B0_vOnPressListenerB),   E_LISTENER_ALREADY_EXISTS, "Do not allow doubled listeners" );
+        // Already exists
+        ASSERT( eAddOnReleaseListener(BUTTON_1, B0_vOnReleaseListenerB), E_LISTENER_ALREADY_EXISTS, "Do not allow doubled listeners" );
         
         
-        // //---------------------------------------------------------------------------------------------------------------
-        // // On press and release test
-         ASSERT( press_counter_A,   4, "Nope !");
-         ASSERT( release_counter_A, 4, "Nope !");
-         ASSERT( press_counter_B,   2, "Nope !");
-         ASSERT( release_counter_B, 2, "Nope !");
+        //---------------------------------------------------------------------------------------------------------------
+        // On press and release test
+        ASSERT( press_counter_A,   4, "Nope !");
+        ASSERT( release_counter_A, 4, "Nope !");
+        ASSERT( press_counter_B,   2, "Nope !");
+        ASSERT( release_counter_B, 2, "Nope !");
         
         PRESS_B1();
         ASSERT( press_counter_A,   4, "Nope !");
@@ -259,25 +254,25 @@ void TEST_4_button(
         
         
         
-        // //===============================================================================================================
-        // // BUTTON_2
+        //===============================================================================================================
+        // BUTTON_2
         
-        // //---------------------------------------------------------------------------------------------------------------
-        // // Ok
-         ASSERT( eAddOnPressListener(BUTTON_2, B0_vOnPressListenerA), E_OK, "Should be E_OK" );
-        // // Ok
-         ASSERT( eAddOnReleaseListener(BUTTON_2, B0_vOnReleaseListenerA), E_OK, "Should be E_OK" );
-        
-        
-        // //---------------------------------------------------------------------------------------------------------------
-        // // Already exists
-         ASSERT( eAddOnPressListener(BUTTON_2, B0_vOnPressListenerA),   E_LISTENER_ALREADY_EXISTS, "Do not allow doubled listeners" );
-        // // Already exists
-         ASSERT( eAddOnReleaseListener(BUTTON_2, B0_vOnReleaseListenerA), E_LISTENER_ALREADY_EXISTS, "Do not allow doubled listeners" );
+        //---------------------------------------------------------------------------------------------------------------
+        // Ok
+        ASSERT( eAddOnPressListener(BUTTON_2, B0_vOnPressListenerA), E_OK, "Should be E_OK" );
+        // Ok
+        ASSERT( eAddOnReleaseListener(BUTTON_2, B0_vOnReleaseListenerA), E_OK, "Should be E_OK" );
         
         
-        // //---------------------------------------------------------------------------------------------------------------
-        // // On press and release test
+        //---------------------------------------------------------------------------------------------------------------
+        // Already exists
+        ASSERT( eAddOnPressListener(BUTTON_2, B0_vOnPressListenerA),   E_LISTENER_ALREADY_EXISTS, "Do not allow doubled listeners" );
+        // Already exists
+        ASSERT( eAddOnReleaseListener(BUTTON_2, B0_vOnReleaseListenerA), E_LISTENER_ALREADY_EXISTS, "Do not allow doubled listeners" );
+        
+        
+        //---------------------------------------------------------------------------------------------------------------
+        // On press and release test
         ASSERT( press_counter_A,   4, "Nope !");
         ASSERT( release_counter_A, 4, "Nope !");
         ASSERT( press_counter_B,   4, "Nope !");
@@ -309,7 +304,7 @@ void TEST_4_button(
         
         
         
-        // //---------------------------------------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------------------------------------
         PRESS_B0();
         ASSERT( press_counter_A,   7, "Nope !");
         ASSERT( release_counter_A, 6, "Nope !");
