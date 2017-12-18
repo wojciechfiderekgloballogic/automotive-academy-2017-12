@@ -26,11 +26,10 @@ void TEST_4_button(
     void   (*vInit)                 (void),
     void   (*vHandleButtons)        (void),
     eErr_t (*eAddOnPressListener)   (eButton_t eButton, eErr_t (*onPressListener) (eButton_t)),
-    eErr_t (*eAddOnReleaseListener) (eButton_t eButton, eErr_t (*onPressListener) (eButton_t))
+    eErr_t (*eAddOnReleaseListener) (eButton_t eButton, eErr_t (*onReleaseListener) (eButton_t))
     );
 
     
 extern int IO__pin0;
 extern int IO__pin1;
 extern int IO__pin2;
-    

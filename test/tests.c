@@ -78,15 +78,15 @@ int main() {
     
     printf("\n--------- TASK 4 ---------\n");    
     TEST_4__BUTTON(WOJFID);
-    //TEST_4__BUTTON(TOMWES);
-    //TEST_4__BUTTON(GRZMAK);
+    TEST_4__BUTTON(TOMWES);
+    TEST_4__BUTTON(GRZMAK);
     //TEST_4__BUTTON(MARTOR);
-    //TEST_4__BUTTON(PAWAZI);
+    TEST_4__BUTTON(PAWAZI);
     TEST_4__BUTTON(MICKAL);
-    //TEST_4__BUTTON(PIOCIE);
+    TEST_4__BUTTON(PIOCIE);
     //TEST_4__BUTTON(RAFAND);
     //TEST_4__BUTTON(JARKUR);
-    //TEST_4__BUTTON(ADAKOR);
+    TEST_4__BUTTON(ADAKOR);
 
     OUT_WHITE();
     return 0;

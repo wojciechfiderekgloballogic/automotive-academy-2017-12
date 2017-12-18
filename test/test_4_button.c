@@ -66,8 +66,13 @@ void TEST_4_button(
     void   (*vInit)                 (void),
     void   (*vHandleButtons)        (void),
     eErr_t (*eAddOnPressListener)   (eButton_t eButton, eErr_t (*onPressListener) (eButton_t)),
-    eErr_t (*eAddOnReleaseListener) (eButton_t eButton, eErr_t (*onPressListener) (eButton_t))
+    eErr_t (*eAddOnReleaseListener) (eButton_t eButton, eErr_t (*onReleaseListener) (eButton_t))
     ) {
+        press_counter_A = 0;
+        release_counter_A = 0;
+        press_counter_B = 0;
+        release_counter_B = 0;
+
         START_TEST(4);
         vInit();
         
@@ -318,5 +323,5 @@ void TEST_4_button(
         ASSERT( release_counter_B, 5, "Nope !");
         STOP_TEST;
         
-        
+
     }

@@ -13,6 +13,7 @@
 #include "PAWAZI_task_1.h"
 #include "PAWAZI_task_2.h"
 #include "PAWAZI_task_3.h"
+#include "PAWAZI_task_4.h"
 
 
 #endif

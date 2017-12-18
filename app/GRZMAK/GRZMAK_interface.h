@@ -18,6 +18,7 @@
 #include "GRZMAK_task1.h"
 #include "GRZMAK_task2.h"
 #include "GRZMAK_task3.h"
+#include "GRZMAK_task4.h"
 #endif
 
 
