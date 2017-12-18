@@ -12,5 +12,6 @@
 #include "ADAKOR_task1.h"
 #include "ADAKOR_task2.h"
 #include "ADAKOR_task3.h"
+#include "ADAKOR_task4.h"
 
 #endif
